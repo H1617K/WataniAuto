@@ -1,0 +1,88 @@
+/* Footer Css File */
+.footer-option {
+    box-shadow: 0px 8px 8px #000000;
+    height: 25px;
+    position: relative;
+    width: 1134px;
+    background-color: transparent;
+    background-image: url(../Images.js);
+  }
+  
+  .footer-option .cancellation-policy {
+    color: #000000;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 925px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -1px;
+    white-space: nowrap;
+  }
+  
+  .footer-option .text-wrapper {
+    color: #000000 ;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -1px;
+    white-space: nowrap;
+  }
+  
+  .footer-option .div {
+    color: #000000 ;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 158px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .footer-option .privacy-policy {
+    color: #000000 ;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 456px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .footer-option .text-wrapper-2 {
+    color: #000000 ;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 667px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -1px;
+    white-space: nowrap;
+  }
+  
+  .footer-option .text-wrapper-3 {
+    color: #000000 ;
+    font-family: "Sofia Pro-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 778px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
