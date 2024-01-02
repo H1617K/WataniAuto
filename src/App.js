@@ -10,13 +10,11 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <FooterOption/>
-    <BtnLogin/>
       <Routes>
         <Route path="HomePage" element={<Home />} />
       </Routes>
       <Routes>
-        <Route path="LoginPage" element={<Login />} />
+        <Route path="Login" element={<Login/>} />
       </Routes>
     </BrowserRouter>
     </>
