@@ -7,7 +7,7 @@
   position: absolute;
   width: 1134px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: transparent;
   left: 14%;
   top: 950px;
