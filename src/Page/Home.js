@@ -1,10 +1,9 @@
 import React from 'react'
-import { FooterOption } from '../Component/Footer/Footer';
+import "../CSS/Home.css"
 
 const Home = () => {
   return (
     <>
-    <FooterOption/>
     <div>
       Home
     </div>
