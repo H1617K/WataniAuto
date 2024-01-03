@@ -1,5 +1,5 @@
 import React from 'react';
-import { img2 } from '../Component/Images';
+import { img1, img2 } from '../Component/Images';
 import { FooterOption } from '../Component/Footer/Footer';
 import '../CSS/Login.css';
 import { Link } from 'react-router-dom';
@@ -41,6 +41,13 @@ const Login = () => {
         </section>
         <FooterOption/>
       </div>
+      <section>
+          <div className='Header'>
+            <div className='Logo'>
+              <img src={img1} alt="Logo"/>
+            </div>
+          </div>
+        </section>
     </section>
     </>
   );
