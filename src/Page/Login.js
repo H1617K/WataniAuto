@@ -8,7 +8,8 @@ import { IoIosArrowDown } from "react-icons/io";
 const Login = () => {
   return (
     <>
-      <section className="Main-login-Page">
+      <section>
+       <div className="Main-login-Page">
         <div className="back-img" >
           <img src={img2} alt="img"/>
           <section>
@@ -56,13 +57,13 @@ const Login = () => {
                   </button>
                     <div className='lang-dropdown-content'>
                       <h6> English </h6>
-                      <h6> Hindi </h6>
-                      <h6> Gujarati </h6>
+                      <h6> arabic </h6>
                      </div>
                 </div>
               </div>
             </div>
           </section>
+        </div>
       </section>
     </>
   );
