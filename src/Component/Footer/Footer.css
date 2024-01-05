@@ -2,7 +2,6 @@
 .footer-option {
   display: flex;
   justify-content: center;
-  box-shadow: 0px 8px 8px #00000040;
   height: 25px;
   position: absolute;
   width: 1134px;
