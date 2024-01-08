@@ -19,7 +19,7 @@
 }
 .Logo{
   color: white;
-  margin-left: 10%;
+  margin-left: 8%;
   height: 40px;
   margin-top: 1%;
   left: 0;
@@ -90,6 +90,12 @@
 }
 .Box-heder-Welcome h2{
   color: white;
+  margin-left: -8%;
+}
+
+.Box-Email {
+  position: relative;
+  margin-bottom: 15px;
 }
 
 .Box-Email input{
@@ -101,52 +107,65 @@
     border: 2px solid #fff;
     outline: none;
     border-radius: 5px;
-    color: white;
     padding: 3%;
     font-weight: bold;
+    color: white;
 }
-.Lable-Holder-Email{
+.Label-Holder-Email{
    position: absolute;
-   margin: -40px -10px;
+   margin: -15px ;
    color: white;
-   
+   pointer-events: none;
+   transition: all 0.3s ease;
 }
-.Lable-Holder-Password{
-   position: absolute;
-   margin: -40px -10px;
-   color: white;
+.Box1-password{
+  position: relative;
+  margin-bottom: 15px;
+}
+.Label-Holder-Password{
+  position: absolute;
+  margin: -15px ;
+  color: white;
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 .Box1-password input{
-    width: 300px;
-    height: 35px;
-    margin-left: -20px;
-    margin-top: 2%;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid #fff;
-    outline: none;
-    color: white;
-    border-radius: 5px;
-    padding: 3%;
-    font-weight: bold;
+  width: 300px;
+  height: 35px;
+  margin-left: -20px;
+  margin-top: 2%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  padding: 3%;
+  font-weight: bold;
 }
 ::placeholder{
     color: rgba(255, 255, 255, 0.648);
 }
 
 .ForgotPassword{
-   color: white;
-   font-size: 20px;
-   letter-spacing: 0.59px;
-   text-align: right;
-   margin-top: -4%;
-   font-weight: bold;
+   display: flex;
+   justify-content: end;
+}
+.OnclickForgetpassword{
+  color: white;
+  font-family: "Sofia pro-Medium", Helvetica;
+  font-size: 20px;
+  letter-spacing: 0.59px;
+  text-align: right;
+  margin-top: -20%;
+  font-weight: bold;
+  margin-right: -6%;
 }
 
 .SubmitButton button{
     width: 275px;
     height: 40px;
     margin-left: -20px;
-    margin-top: 40px;
+    margin-top: 35px;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid #cecece;
     outline: none;
