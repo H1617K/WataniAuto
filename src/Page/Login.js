@@ -4,6 +4,7 @@ import { FooterOption } from '../Component/Footer/Footer';
 import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+// import { useFormValidation } from '../Utils/formValidation';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,9 +16,9 @@ const Login = () => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
 
   const handleEmailFocus = () => {
     setEmailPlaceholder('example@domain.com');
@@ -30,18 +31,20 @@ const Login = () => {
   };
 
   const handlePasswordFocus = () => {
+    setPasswordPlaceholder('Password');
     setIsPasswordFocused(true);
   };
 
   const handlePasswordBlur = () => {
-    setIsPasswordFocused(false);
+    setPasswordPlaceholder('Password*');
+    setIsPasswordFocused(password !== '');
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange   = (e) => {
     setPassword(e.target.value);
   };
 
@@ -58,6 +61,8 @@ const Login = () => {
   const handleForgetPassword = () => {
     navigate('/Forgetpassword');
   };
+
+  // const { email, password, handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange } = useFormValidation()
 
   return (
     <section>
@@ -90,7 +95,7 @@ const Login = () => {
                     type={showPassword ? 'text' : 'password'}
                     name="password"
                     value={password}
-                    placeholder={isPasswordFocused ? '' : 'Password*'}
+                    placeholder={isPasswordFocused ? '' : passwordPlaceholder}
                     onChange={handlePasswordChange}
                     onFocus={handlePasswordFocus}
                     onBlur={handlePasswordBlur}
