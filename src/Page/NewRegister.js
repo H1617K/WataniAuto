@@ -1,9 +1,9 @@
 import React from 'react';
 import { img1, img2 } from '../Component/Images';
 import '../CSS/NewRegister.css';
-import { FaArrowDown} from "react-icons/fa";
 // import { FiInfo } from "react-icons/fi";
 import { FooterOption } from '../Component/Footer/Footer';
+import { IoIosArrowDown } from 'react-icons/io';
 
 
 const Login = () => {
@@ -69,12 +69,23 @@ const Login = () => {
           <FooterOption/>
         </div>
         <section>
-            <div className='Header'>
-              <div className='Logo'>
+        <div className='Header-container'>
+              <div className='Logo-watani'>
                 <img src={img1} alt="Logo"/>
               </div>
-              <div className='EN'>
-                <h4>EN <FaArrowDown /></h4> 
+              <div className='language-container'>
+                <div className='lang-dropdown'>
+                  <button className='lang-dropdown-button'>
+                    <p>EN</p>
+                    <div className='arrow-vect'>
+                       <IoIosArrowDown />
+                    </div>
+                  </button>
+                    <div className='lang-dropdown-content'>
+                      <h6> English </h6>
+                      <h6> Arabic </h6>
+                     </div>
+                </div>
               </div>
             </div>
           </section>
