@@ -69,8 +69,9 @@
   font-size: 15px;
   font-style: normal;
   font-weight: 100;
-  line-height: 10px;  
+  /* line-height: 10px;   */
   letter-spacing: -0.408px;
+  cursor: pointer;
 }
 
   .lang-dropdown {
@@ -105,7 +106,7 @@
     margin-left: -20px;
     margin-top: 3%;
     background: rgba(255, 255, 255, 0.2);
-    border: 2px solid #fff;
+    border: 1px solid #ccc;
     outline: none;
     border-radius: 5px;
     padding: 3%;
@@ -130,13 +131,14 @@
   pointer-events: none;
   transition: all 0.3s ease;
 }
+
 .Box1-password input{
   width: 300px;
   height: 35px;
   margin-left: -20px;
   margin-top: 3%;
   background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #fff;
+  border: 1px solid #ccc;
   outline: none;
   border-radius: 5px;
   color: white;
@@ -147,9 +149,32 @@
     color: rgba(255, 255, 255, 0.648);
 }
 
+.tooggle-password{
+  position: absolute;
+  right: 0px;
+  top: 40%;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.Box-Email input:focus,
+.Box1-password input:focus{
+  border: 1px solid white;
+}
+
+/* .Box-Email input:invalid,
+.Box1-password input:invalid{
+  border: 1px solid #dc3545;
+} */
+
 .ForgotPassword{
    display: flex;
    justify-content: end;
+   cursor: pointer;
 }
 .OnclickForgetpassword{
   color: white;
@@ -173,6 +198,7 @@
     color: rgba(255, 255, 255, 0.648);
     font-weight: bold;
     padding: 3%;
+    cursor: pointer;
 }
 
 .NewUser{
@@ -195,4 +221,5 @@
     height: 30px;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
 }

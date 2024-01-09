@@ -5,6 +5,7 @@ import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 // import { useFormValidation } from '../Utils/formValidation';
+import validator from 'validator';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,10 +16,12 @@ const Login = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-  // const togglePasswordVisibility = () => {
-  //   setShowPassword(!showPassword);
-  // };
+  const toogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleEmailFocus = () => {
     setEmailPlaceholder('example@domain.com');
@@ -42,14 +45,36 @@ const Login = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    validateEmail();
   };
 
   const handlePasswordChange   = (e) => {
     setPassword(e.target.value);
+    validatePassword();
+  };
+
+  const validateEmail = () => {
+    if (!validator.isEmail(email)) {
+      setEmailError('Invalid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  const validatePassword = () => {
+    if (passwordPattern.test(password)) {
+      setPasswordError('Password must be at least 8 characters long');
+    } else {
+      setPasswordError('');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validator.isEmail(email) || passwordPattern.test(password)) {
+      return;
+    }
     localStorage.setItem('User', JSON.stringify({ email, password }));
     console.log(JSON.stringify({ email, password }));
   };
@@ -101,6 +126,9 @@ const Login = () => {
                     onBlur={handlePasswordBlur}
                     required
                   />
+                  <button type='button' className='tooggle-password' onClick={toogglePasswordVisibility}>
+                      {showPassword ? "Hide" : "Show"}
+                  </button>
                 </div>
                 <br />
                 <div className="ForgotPassword">
