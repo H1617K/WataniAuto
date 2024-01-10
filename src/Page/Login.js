@@ -5,12 +5,12 @@ import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { useFormValidation } from '../Utils/FormValidation';
-import { strings, useUserLanguage } from '../Utils/LocalizedStrings';
+import useUserLanguage from '../Utils/LocalizedStrings';
 
 const Login = () => {
-  const { language, changeLanguage } = useUserLanguage();
+  const { language, changeLanguage, strings } = useUserLanguage();
   const navigate = useNavigate();
-  const [emailPlaceholder, setEmailPlaceholder] = useState(strings[language].Email);
+  const [emailPlaceholder, setEmailPlaceholder] = useState(strings.Email);
   const [showPassword, setShowPassword] = useState(false);
 
   const toogglePasswordVisibility = () => {
@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleLanguageChange = (selectedLanguage) => {
     changeLanguage(selectedLanguage);
-    setEmailPlaceholder(strings[selectedLanguage].Email);
+    setEmailPlaceholder(strings.Email);
   };
 
   const handleEmailBlur = () => {
@@ -60,7 +60,7 @@ const Login = () => {
             <div className="Main-Login-form">
               <form onSubmit={handlerSubmit} noValidate>
                 <div className="Box-heder-Welcome">
-                  <h2>Welcome!</h2>
+                  <h2>{strings.Welcome}</h2>
                 </div>
                 <div className="Box-Email">
                   {isEmailFocused && <label className="Label-Holder-Email">Email*</label>}
