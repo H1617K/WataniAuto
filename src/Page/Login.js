@@ -5,16 +5,22 @@ import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { useFormValidation } from '../Utils/FormValidation';
+import { strings, useUserLanguage } from '../Utils/LocalizedStrings';
 
 const Login = () => {
+  const { language, changeLanguage } = useUserLanguage();
   const navigate = useNavigate();
-  const [emailPlaceholder, setEmailPlaceholder] = useState('Email*');
+  const [emailPlaceholder, setEmailPlaceholder] = useState(strings[language].Email);
   const [showPassword, setShowPassword] = useState(false);
 
   const toogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleLanguageChange = (selectedLanguage) => {
+    changeLanguage(selectedLanguage);
+    setEmailPlaceholder(strings[selectedLanguage].Email);
+  };
 
   const handleEmailBlur = () => {
     setEmailPlaceholder('Email*');
@@ -129,14 +135,14 @@ const Login = () => {
             <div className="language-container">
               <div className="lang-dropdown">
                 <button className="lang-dropdown-button">
-                  <p>EN</p>
+                  <p>{language}</p>
                   <div className="arrow-vect">
                     <IoIosArrowDown />
                   </div>
                 </button>
                 <div className="lang-dropdown-content">
-                  <h6> English </h6>
-                  <h6> Arabic </h6>
+                 <h6 onClick={() => handleLanguageChange('en')}> English </h6>
+                 <h6 onClick={() => handleLanguageChange('ar')}> Arabic </h6>
                 </div>
               </div>
             </div>
