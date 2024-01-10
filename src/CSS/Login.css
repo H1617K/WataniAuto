@@ -108,7 +108,6 @@
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid #ccc;
     outline: none;
-    border-radius: 5px;
     padding: 3%;
     font-weight: bold;
     color: white;
@@ -120,9 +119,38 @@
    pointer-events: none;
    transition: all 0.3s ease;
 }
+.Box-Email input.error{
+  border: 2px solid red;
+}
+
+.error-container {
+  position: absolute;
+  top: 100%;
+  left: 0; 
+}
+
+.error-message {
+  display: none;
+  position: relative;
+  right: 120%;
+  transform: translateY(-120%);
+  background-color: red;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.error-container.show .error-message {
+  display: block;
+}
+
 .Box1-password{
   position: relative;
   margin-bottom: 15px;
+}
+.Box1-password input.error{
+  border: 2px solid red;
 }
 .Label-Holder-Password{
   position: absolute;
@@ -140,13 +168,21 @@
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid #ccc;
   outline: none;
-  border-radius: 5px;
   color: white;
   padding: 3%;
   font-weight: bold;
 }
 ::placeholder{
     color: rgba(255, 255, 255, 0.648);
+}
+
+.arrow-right {
+  position: absolute;
+  top: 30%;
+  right: -8px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #ff0000;
 }
 
 .tooggle-password{
@@ -159,17 +195,13 @@
   cursor: pointer;
   font-size: 14px;
   margin-left: 5px;
+  text-decoration: underline;
 }
 
 .Box-Email input:focus,
 .Box1-password input:focus{
   border: 1px solid white;
 }
-
-/* .Box-Email input:invalid,
-.Box1-password input:invalid{
-  border: 1px solid #dc3545;
-} */
 
 .ForgotPassword{
    display: flex;
@@ -200,6 +232,7 @@
     padding: 3%;
     cursor: pointer;
 }
+
 
 .NewUser{
     width: 100%;

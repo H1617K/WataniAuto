@@ -4,79 +4,34 @@ import { FooterOption } from '../Component/Footer/Footer';
 import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-// import { useFormValidation } from '../Utils/formValidation';
-import validator from 'validator';
+import { useFormValidation } from '../Utils/FormValidation';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [emailPlaceholder, setEmailPlaceholder] = useState('Email*');
-  const [passwordPlaceholder, setPasswordPlaceholder] = useState('Password*');
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
 
   const toogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleEmailFocus = () => {
-    setEmailPlaceholder('example@domain.com');
-    setIsEmailFocused(true);
-  };
 
   const handleEmailBlur = () => {
     setEmailPlaceholder('Email*');
     setIsEmailFocused(email !== '');
   };
 
+  const onFocus = () => {
+    setEmailPlaceholder("example@domain.com")
+    setIsEmailFocused(true);
+}
+
   const handlePasswordFocus = () => {
-    setPasswordPlaceholder('Password');
     setIsPasswordFocused(true);
   };
 
   const handlePasswordBlur = () => {
-    setPasswordPlaceholder('Password*');
     setIsPasswordFocused(password !== '');
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    validateEmail();
-  };
-
-  const handlePasswordChange   = (e) => {
-    setPassword(e.target.value);
-    validatePassword();
-  };
-
-  const validateEmail = () => {
-    if (!validator.isEmail(email)) {
-      setEmailError('Invalid email address');
-    } else {
-      setEmailError('');
-    }
-  };
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-  const validatePassword = () => {
-    if (passwordPattern.test(password)) {
-      setPasswordError('Password must be at least 8 characters long');
-    } else {
-      setPasswordError('');
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validator.isEmail(email) || passwordPattern.test(password)) {
-      return;
-    }
-    localStorage.setItem('User', JSON.stringify({ email, password }));
-    console.log(JSON.stringify({ email, password }));
   };
 
   const handleRegisterClick = () => {
@@ -87,7 +42,8 @@ const Login = () => {
     navigate('/Forgetpassword');
   };
 
-  // const { email, password, handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange } = useFormValidation()
+  const { email, password, isEmailFocused, setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
+  }= useFormValidation()
 
   return (
     <section>
@@ -96,7 +52,7 @@ const Login = () => {
           <img src={img2} alt="img" />
           <section>
             <div className="Main-Login-form">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handlerSubmit} noValidate>
                 <div className="Box-heder-Welcome">
                   <h2>Welcome!</h2>
                 </div>
@@ -104,31 +60,42 @@ const Login = () => {
                   {isEmailFocused && <label className="Label-Holder-Email">Email*</label>}
                   <input
                     type="email"
+                    className={emailError ? 'error' : ''}
                     name="email"
                     value={email}
                     placeholder={emailPlaceholder}
                     onChange={handleEmailChange}
-                    onFocus={handleEmailFocus}
+                    onFocus={onFocus}
                     onBlur={handleEmailBlur}
+                    maxLength={30}
                     required
                   />
+                  <div className={`error-container ${emailError ? 'show' : ''}`}>
+                    {(emailError) && <div className='error-message'>{emailError}<span className='arrow-right'></span></div>}
+                  </div>
                 </div>
                 <br />
                 <div className="Box1-password">
                   {isPasswordFocused && <label className="Label-Holder-Password">Password*</label>}
                   <input
                     type={showPassword ? 'text' : 'password'}
+                    className={passwordError ? 'error' : ''}
                     name="password"
                     value={password}
-                    placeholder={isPasswordFocused ? '' : passwordPlaceholder}
+                    placeholder={isPasswordFocused ? '' : 'Password*'}
                     onChange={handlePasswordChange}
                     onFocus={handlePasswordFocus}
                     onBlur={handlePasswordBlur}
+                    minLength={8}
+                    maxLength={15}
                     required
                   />
                   <button type='button' className='tooggle-password' onClick={toogglePasswordVisibility}>
                       {showPassword ? "Hide" : "Show"}
                   </button>
+                  <div className={`error-container ${passwordError ? 'show' : ''}`}>
+                    {(passwordError) && <div className='error-message'>{passwordError}<span className='arrow-right'></span></div>}
+                  </div>
                 </div>
                 <br />
                 <div className="ForgotPassword">
@@ -138,7 +105,7 @@ const Login = () => {
                 </div>
                 <br />
                 <div className="SubmitButton">
-                  <button type="submit">Login</button>
+                  <button type="submit" className='btn_login' style={{backgroundColor: email.length > 1 || password.length > 1 ? 'blue' : ''}}>Login</button>
                 </div>
                 <br />
                 <div className="NewUser">
