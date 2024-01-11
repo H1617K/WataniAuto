@@ -4,32 +4,6 @@
     position: relative;
 }
 
-.Header-container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 50px;
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    background-color: transparent;
-    -webkit-box-shadow: 0px 0px 10px 0px #000000; 
-    box-shadow: 0px 0px 10px 0px #000000;
-}
-.Logo-watani{
-    color: white;
-    margin-left: -35%;
-    height: 40px;
-    left: 0;
-}
-
-.EN{
-    color: white;
-    margin-right: 5%;
-    height: 20px;
-    position: relative;
-}
-
 .Main-Register-form{
     display: flex;
     justify-content: center;
