@@ -5,6 +5,8 @@ import '../CSS/NewRegister.css';
 import { FooterOption } from '../Component/Footer/Footer';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from 'i18next';
+import i18n from '../Utils/LanguageLocalization';
 
 
 const Login = () => {
@@ -72,26 +74,26 @@ const Login = () => {
           <FooterOption/>
         </div>
         <section>
-        <div className='Header-container'>
-              <div className='Logo-watani'>
-                <img src={img1} alt="Logo"/>
-              </div>
-              <div className='language-container'>
-                <div className='lang-dropdown'>
-                  <button className='lang-dropdown-button'>
-                    <p>EN</p>
-                    <div className='arrow-vect'>
-                       <IoIosArrowDown />
-                    </div>
-                  </button>
-                    <div className='lang-dropdown-content'>
-                      <h6> English </h6>
-                      <h6> Arabic </h6>
-                     </div>
+          <div className="Header">
+            <div className="Logo">
+              <img src={img1} alt="Logo" />
+            </div>
+            <div className="language-container">
+              <div className="lang-dropdown">
+                <button className="lang-dropdown-button">
+                  <p>{i18n.language}</p>
+                  <div className="arrow-vect">
+                    <IoIosArrowDown />
+                  </div>
+                </button>
+                <div className="lang-dropdown-content">
+                 <button onClick={() => changeLanguage ('English')}> English </button>
+                 <button onClick={() => changeLanguage('Arbic')}> Arabic </button>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
       </section>
     </>
   );
