@@ -49,14 +49,17 @@
     color: white;
 }
 
-  .lang-dropdown-content h6 {
-    color: var(--color);
-    padding: 2px 5px;
+  .lang-dropdown-content button {
     text-decoration: none;
     display: block;
+    border: none;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    background-color:transparent;
 }
 
-  .lang-dropdown-content h6:hover {
+  .lang-dropdown-content button:hover {
     background-color: rgba(12, 11, 11, 0.5);
   }
 
@@ -132,7 +135,7 @@
 .error-message {
   display: none;
   position: relative;
-  right: 120%;
+  right: 125%;
   transform: translateY(-120%);
   background-color: red;
   color: white;
