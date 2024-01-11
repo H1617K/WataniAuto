@@ -11,7 +11,7 @@ i18n
     resources : {
         English: {
             translation:{
-                //LoginPage English
+                //LoginPage 
                 Welcome: "Welcome!",
                 Email: "Email*",
                 Password: "Password*",
@@ -31,11 +31,23 @@ i18n
                 Help: "Help",
                 Careers: "Careers",
                 textKey: "Cancellation policy",
+
+                //RegisterPage 
+                CreateanAccount: "Create an Account",
+                FirstName: "First Name*",
+                LastName: "Last Name*",
+                EmailInfo: "Email is used for communication purpose",
+                Number: "+996",
+                MobileNumber: "Mobile Number*",
+                ConfrimPassword: "Confrim password*",
+                ConfirmPasswordError: "Password Doesn't Match",
+                Notice: "By creating a watani account, I agree to the Terms of Use, and Privacy Notice.",
+                CreateAccount: "Create Account",
             }
         },
         Arbic: {
             translation:{
-                //LoginPage Arabic
+                //LoginPage 
                 Welcome: "مرحباً!",
                 Email: "بريد إلكتروني*",
                 Password: "كلمة المرور*",
@@ -55,6 +67,18 @@ i18n
                 Help: "يساعد",
                 Careers: "وظائف",
                 textKey: "سياسة الإلغاء",
+
+                //RegisterPage
+                CreateanAccount: "إنشاء حساب",
+                FirstName: "الاسم الأول*",
+                LastName: "اسم العائلة*",
+                EmailInfo: "يستخدم البريد الإلكتروني لغرض التواصل",
+                Number: "تسعة مائة وستة وتسعون",
+                MobileNumber: "رقم الهاتف المحمول*",
+                ConfrimPassword: "تأكيد كلمة المرور*",
+                ConfirmPasswordError: "كلمة المرور غير متطابقة",
+                Notice: "بإنشاء حساب وطني، فإنني أوافق على شروط الاستخدام وإشعار الخصوصية.",
+                CreateAccount: "إنشاء حساب", 
             }
         }
     }

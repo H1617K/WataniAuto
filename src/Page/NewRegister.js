@@ -4,9 +4,12 @@ import '../CSS/NewRegister.css';
 // import { FiInfo } from "react-icons/fi";
 import { FooterOption } from '../Component/Footer/Footer';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 
 
 const Login = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <section className="Main-Register-Page">
