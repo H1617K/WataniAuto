@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate(); // Navigation 
   const [emailPlaceholder, setEmailPlaceholder] = useState("Email*"); // email PlaceHolder
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
-  const langdirection = i18n.language === "Arabic" ? "rtl" : "ltr"  // Language Direction
+  const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"  // Language Direction
 
   const changeLanguage = (newLanguage) => {  // Change Language
     i18n.changeLanguage(newLanguage);
@@ -150,8 +150,8 @@ const Login = () => {
                   </div>
                 </button>
                 <div className="lang-dropdown-content">
-                 <button onClick={() => changeLanguage ('English')}> English </button>
-                 <button onClick={() => changeLanguage('Arabic')}> Arabic </button>
+                 <button onClick={() => changeLanguage('English')}> English </button>
+                 <button onClick={() => changeLanguage('عربي')}> عربي </button>
                 </div>
               </div>
             </div>
