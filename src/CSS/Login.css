@@ -67,7 +67,7 @@
     display: block;
   }
   
-.lang-dropdown-content h6 {
+.lang-dropdown-content button {
   font-family: "Sofia Pro", sans-serif;
   font-size: 15px;
   font-style: normal;
