@@ -11,6 +11,7 @@ i18n
     resources : {
         English: {
             translation:{
+                //LoginPage English
                 Welcome: "Welcome!",
                 Email: "Email*",
                 Password: "Password*",
@@ -22,10 +23,19 @@ i18n
                 RegisterNow: "Register Now",
                 emailError: "Please enter the Correct email id.",
                 passwordError: "please enter the Correct Password.",
+
+                //FooterOption
+                AboutUs:"About Us",
+                TermsandConditions: "Terms and Conditions",
+                text1Key: "Privacy policy",
+                Help: "Help",
+                Careers: "Careers",
+                textKey: "Cancellation policy",
             }
         },
         Arbic: {
             translation:{
+                //LoginPage Arabic
                 Welcome: "مرحباً!",
                 Email: "بريد إلكتروني*",
                 Password: "كلمة المرور*",
@@ -37,6 +47,14 @@ i18n
                 RegisterNow: "سجل الآن",
                 emailError: "الرجاء إدخال معرف البريد الإلكتروني الصحيح.",
                 passwordError: "الرجاء إدخال كلمة المرور الصحيحة.",
+
+                //FooterOption
+                AboutUs:"معلومات عنا",
+                TermsandConditions: "الأحكام والشروط",
+                text1Key: "سياسة الخصوصية",
+                Help: "يساعد",
+                Careers: "وظائف",
+                textKey: "سياسة الإلغاء",
             }
         }
     }
