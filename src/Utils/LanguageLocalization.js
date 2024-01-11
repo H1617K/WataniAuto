@@ -45,7 +45,7 @@ i18n
                 CreateAccount: "Create Account",
             }
         },
-        Arbic: {
+        Arabic: {
             translation:{
                 //LoginPage 
                 Welcome: "مرحباً!",

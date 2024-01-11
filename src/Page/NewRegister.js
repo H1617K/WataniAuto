@@ -9,8 +9,13 @@ import { changeLanguage } from 'i18next';
 import i18n from '../Utils/LanguageLocalization';
 
 
-const Login = () => {
+const Register = () => {
   const { t } = useTranslation();
+  const langdirection = i18n.language === "Arbic" ? "rtl" : "ltr"  // Language Direction
+
+  const changeLanguage = (newLanguage) => {  // Change Language
+    i18n.changeLanguage(newLanguage);
+  };
 
   return (
     <>
@@ -99,4 +104,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Register;
