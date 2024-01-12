@@ -1,32 +1,41 @@
 import React from 'react';
 import { img1, img2 } from '../Component/Images';
 import '../CSS/NewRegister.css';
-// import { FiInfo } from "react-icons/fi";
 import { FooterOption } from '../Component/Footer/Footer';
 import { IoIosArrowDown } from 'react-icons/io';
+import { FaArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { useTranslation } from 'react-i18next';
-import { changeLanguage } from 'i18next';
 import i18n from '../Utils/LanguageLocalization';
-
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const { t } = useTranslation();
-  const langdirection = i18n.language === "Arbic" ? "rtl" : "ltr"  // Language Direction
+  const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"; // Language Direction
 
-  const changeLanguage = (newLanguage) => {  // Change Language
+  const changeLanguage = (newLanguage) => {
     i18n.changeLanguage(newLanguage);
+  };
+
+  // Move useNavigate outside of the handleToLogin function
+  const navigate = useNavigate();
+
+  const handleToLogin = () => {
+    navigate('/Login');
   };
 
   return (
     <>
-      <section className="Main-Register-Page">
-        <div className="back-img" >
-          <img src={img2} alt="img"/>
+      <section className="Main-Register-Page" dir={langdirection}>
+        <div className="back-img">
+          <img src={img2} alt="img" />
           <section>
-             <div className="Main-Register-form">
-                <form>
+            <form>
+              <div className='Main-Register-form'>
+                 <div className='Back-To-Login'>
+                   <button type='button' onClick={handleToLogin}><FaArrowLeft /></button>
+                 </div>
                  <div className="Box-heder1">
-                   <h2>Create an Anccount</h2>
+                   <h2>{t("Create an Account")}</h2>
                  </div><br />
                  <div className='Box1'>
                     <div className='FristName'>
@@ -40,16 +49,16 @@ const Register = () => {
                     <div className='Email'>
                         <input type='Email' placeholder='Email*' required />
                     </div>
-                    {/* <div className='Info'>
-                    <FiInfo />
-                    </div> */}
+                    <div className='Info'>
+                    <FaCircleInfo />
+                    </div>
                  </div><br />
                  <div className='Box3'>
                     <div className='CountryCode'>
                         <input type='positivenumber' placeholder='+91' required />
                     </div>
                     <div className='MobileNub'>
-                        <input type='PhoneNumber'  placeholder='Mobile Number*' required  />
+                        <input type='PhoneNumber'  placeholder='Mobile Number*'maxLength={10} required  />
                     </div>
                  </div><br/>
                  <div className='Box4'>
@@ -73,10 +82,10 @@ const Register = () => {
                     <div className='SubmitButton'>
                      <button type='submit'>Create Account</button>
                     </div>
-                </form>          
-              </div>
+                    </div>
+            </form>
           </section>
-          <FooterOption/>
+          <FooterOption />
         </div>
         <section>
           <div className="Header">
@@ -92,8 +101,8 @@ const Register = () => {
                   </div>
                 </button>
                 <div className="lang-dropdown-content">
-                 <button onClick={() => changeLanguage ('English')}> English </button>
-                 <button onClick={() => changeLanguage('Arbic')}> Arabic </button>
+                  <button onClick={() => changeLanguage('English')}> English </button>
+                  <button onClick={() => changeLanguage('عربي')}> عربي </button>
                 </div>
               </div>
             </div>
