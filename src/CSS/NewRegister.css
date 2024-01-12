@@ -147,12 +147,12 @@
     right: 35px;
     background: none;
     border: none;
-    color: #fff;
+    color: white;
     cursor: pointer;
     font-size: 14px;
     margin-left: 5px;
     text-decoration: underline;
-    bottom: 215px;
+    top: 400px;
 }
 
 .Box5{
@@ -185,7 +185,7 @@
     font-size: 14px;
     margin-left: 5px;
     text-decoration: underline;
-    top: 400px;
+    bottom: 205px;
 }
 
 .Box6{

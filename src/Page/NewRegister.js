@@ -64,7 +64,7 @@ const Register = () => {
                   </div>
                  </div><br />
                   <div className='Box3'>
-                    <div className='CountyCode'>
+                    <div className='CountyCode'>  
                       <input type='positivenumber' placeholder={t("Number")} required/>
                     </div>
                     <div className='MobileNumber'>
