@@ -7,6 +7,7 @@ import { FaArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Register = () => {
   const { t } = useTranslation();
@@ -22,6 +23,10 @@ const Register = () => {
   const handleToLogin = () => {
     navigate('/Login');
   };
+
+  // const handleToHome = () => {
+  //   navigate('/Home')
+  // }
 
   return (
     <>
@@ -53,14 +58,14 @@ const Register = () => {
                     <FaCircleInfo />
                     </div>
                  </div><br />
-                 <div className='Box3'>
-                    <div className='CountryCode'>
-                        <input type='positivenumber' placeholder='+91' required />
-                    </div>
-                    <div className='MobileNub'>
-                        <input type='PhoneNumber'  placeholder='Mobile Number*'maxLength={10} required  />
-                    </div>
-                 </div><br/>
+                  <div className='Box3'>
+                     <div className='CountyCode'>
+                      <input type='positivenumber' placeholder='+966' required/>
+                     </div>
+                     <div className='MobileNumber'>
+                      <input type='positivenumber' placeholder='Mobile Number*' required/>
+                     </div>
+                  </div><br />
                  <div className='Box4'>
                     <div className='Password'>
                         <input type='Password' placeholder='Password*' required />
@@ -72,12 +77,12 @@ const Register = () => {
                     </div>
                  </div><br />
                  <div className='Box6'>
-                    <div className='CheckBox'>
-                    <input type='CheckBox' required/>
-                    <h6>By creating a watani account, i agree to the Tearms
-                            of Use, and Privacy Notice.
-                        </h6>
-                    </div>
+                  <div className='CheckBox'>
+                   <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" required/>
+                  </div>
+                  <div className='Notice'>
+                    <h6>By creating a watani account, I agree to the  Terms of Use, and Privacy Notice.</h6>
+                  </div>
                  </div>
                     <div className='SubmitButton'>
                      <button type='submit'>Create Account</button>
@@ -114,3 +119,5 @@ const Register = () => {
 }
 
 export default Register;
+
+//By creating a watani account, i agree to the Tearms of Use, and Privacy Notice.
