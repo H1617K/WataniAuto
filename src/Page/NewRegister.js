@@ -8,10 +8,12 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
+import '../Utils/FormValidation';
 
 const Register = () => {
   const { t } = useTranslation();
   const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"; // Language Direction
+  const language = i18n.language === "عربي";
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const [showconfimpassword, setShowconfimPassword] = useState(false);  // Show ConfimPaaword
   const [selectedCountry, setSelectedCountry] = useState(null);  // CountryCode
@@ -104,15 +106,15 @@ const Register = () => {
                  <div className='Box4'>
                     <div className='Password'>
                       <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required />
-                      <button type='button' className='tooggle-password1' onClick={toogglePasswordVisibility} >
-                        {showPassword ? t("Hide") : t("Show")}
+                      <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
+                       {showPassword ? t("Hide") : t("Show")}
                       </button>
                     </div>
                  </div><br />
                  <div className='Box5'>
                     <div className='Confrim-Password'>
                       <input type={showconfimpassword ? 'text' : 'password'} placeholder={t("ConfrimPassword")} required />
-                      <button type='button' className='tooggle-password-confim' onClick={tooggleConfimPasswordVisibility} >
+                      <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
                         {showconfimpassword ? t("Hide") : t("Show")}
                       </button>
                     </div>
@@ -160,5 +162,3 @@ const Register = () => {
 }
 
 export default Register;
-
-//By creating a watani account, i agree to the Tearms of Use, and Privacy Notice.

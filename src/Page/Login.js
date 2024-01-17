@@ -13,6 +13,7 @@ const Login = () => {
   const [emailPlaceholder, setEmailPlaceholder] = useState("Email*"); // email PlaceHolder
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"  // Language Direction
+  const language = i18n.language === "عربي";
 
   const changeLanguage = (newLanguage) => {  // Change Language
     i18n.changeLanguage(newLanguage);
@@ -107,7 +108,7 @@ const Login = () => {
                     maxLength={15}
                     required
                   />
-                  <button type='button' className='tooggle-password' onClick={toogglePasswordVisibility} >
+                  <button type='button' className={`tooggle-password ${language ? "Show_button" : ''}`} onClick={toogglePasswordVisibility} >
                       {showPassword ? t("Hide") : t("Show")}
                   </button>
                   <div className={`error-container ${passwordError ? 'show' : ''}`}>

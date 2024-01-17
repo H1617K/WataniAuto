@@ -208,6 +208,10 @@
   text-decoration: underline;
 }
 
+.Show_button{
+  right: 270px;
+}
+
 .Box-Email input:focus,
 .Box1-password input:focus{
   border: 1px solid white;

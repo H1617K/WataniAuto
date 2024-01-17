@@ -103,15 +103,15 @@
     height: 45px;
     top: -55px;
     margin-left: -190px;
-    margin-right: -190px;
+    margin-right: 10px;
 }
 .arrow-down{
     top: 100%;
     position: absolute;
-    right: -1%;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #ffff;
+    right: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #ffff;
     float: left;
 }
 
@@ -170,6 +170,7 @@
 .tooggle-password1{
     position: absolute;
     right: 35px;
+    top: 55.5%;
     background: none;
     border: none;
     color: white;
@@ -177,7 +178,10 @@
     font-size: 14px;
     margin-left: 5px;
     text-decoration: underline;
-    top: 400px;
+}
+.Show_passwordbutton{
+    right: 415px;
+    top: 396px;
 }
 
 .Box5{
@@ -212,7 +216,9 @@
     text-decoration: underline;
     bottom: 210px;
 }
-
+.Confrim-Paswsword-arabic{
+    right: 420px;
+}
 .Box6{
     display: flex;
     flex-direction: row;
