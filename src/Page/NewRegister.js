@@ -7,12 +7,15 @@ import { FaArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
+import countryList from 'react-select-country-list';
 
 const Register = () => {
   const { t } = useTranslation();
   const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"; // Language Direction
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const [showconfimpassword, setShowconfimPassword] = useState(false);  // Show ConfimPaaword
+  const [selectedCountry, setSelectedCountry] = useState(null);  // CountryCode
+  const [showMessage, setShowMessage] = useState(false);
 
   const changeLanguage = (newLanguage) => {
     i18n.changeLanguage(newLanguage);
@@ -26,11 +29,21 @@ const Register = () => {
     setShowconfimPassword(!showconfimpassword)
   }
 
+  const handleCountryChange = (value) => {
+    setSelectedCountry(value);
+  };
+
   // Move useNavigate outside of the handleToLogin function
   const navigate = useNavigate();
 
   const handleToLogin = () => {
     navigate('/Login');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted!");
   };
 
   return (
@@ -39,7 +52,7 @@ const Register = () => {
         <div className="back-img">
           <img src={img5} alt="img" />
           <section>
-            <form>
+            <form onSubmit={handleSubmit} noValidate>
               <div className='Main-Register-form'>
                 <div className='Back-To-Login'>
                   <button type='button' onClick={handleToLogin}><FaArrowLeft /></button>
@@ -59,16 +72,33 @@ const Register = () => {
                   <div className='Email'>
                     <input type='Email' placeholder={t("Email")} required />
                   </div>
-                  <div className='Info'>
-                    <FaCircleInfo />
+                    <div className='Info'>
+                     <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
+                     {showMessage && (
+                      <div className= 'HoverMessage' title={t("HoverMessage")} >
+                        Email is used for Communication purpose.
+                        <span className='arrow-down'></span>
+                      </div>
+                    )}
+                      <FaCircleInfo />
+                    </div>
                   </div>
                  </div><br />
                   <div className='Box3'>
-                    <div className='CountyCode'>  
-                      <input type='positivenumber' placeholder={t("Number")} required/>
-                    </div>
+                  <div className='CountryList'>
+                    <select
+                      onChange={(e) => handleCountryChange(e.target.value)}
+                      value={selectedCountry}
+                    >
+                      {countryList().getData().map((country) => (
+                        <option key={country.value} value={country.value}>
+                          {country.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                     <div className='MobileNumber'>
-                     <input type='positivenumber' placeholder={t("MobileNumber")} required/>
+                     <input type='positiveNumber' placeholder={t("MobileNumber")} required/> 
                     </div>
                   </div><br />
                  <div className='Box4'>

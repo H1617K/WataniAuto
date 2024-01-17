@@ -21,7 +21,9 @@
 }
 
 .Back-To-Login{
-    margin-top: 8%;
+    margin-top: 7%;
+    margin-left: 35px;
+    margin-right: 35px;
 }
 .Back-To-Login button{
     background-color: transparent;
@@ -81,14 +83,36 @@
 }
 
 .Info{
+    position: relative;
     width: 50px;
     height: 35px;
-    margin-top: 2%;
+    margin-top: 4%;
     text-decoration:solid;
     color: white;
     margin-left: 235px;
-    margin-top: 5.5%;
     margin-right:  235px;
+}
+.HoverMessage{
+    position: absolute;
+    font-size: 12px;
+    font-weight: 400px;
+    color: black;
+    border: 1px solid white;
+    background-color: white;
+    width: 200px;
+    height: 45px;
+    top: -55px;
+    margin-left: -190px;
+    margin-right: -190px;
+}
+.arrow-down{
+    top: 100%;
+    position: absolute;
+    right: -1%;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffff;
+    float: left;
 }
 
 .Box3{
@@ -98,17 +122,18 @@
     align-items: center;
 }
 
-.CountyCode input{
+.CountryList select{
   width: 80px;
   height: 40px;
   margin-left: 40px;
   margin-right: 40px;
-  background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 1px solid #ccc;
   outline: none;
   font-weight: bold;
   padding: 1%;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .MobileNumber input{ 
@@ -185,7 +210,7 @@
     font-size: 14px;
     margin-left: 5px;
     text-decoration: underline;
-    bottom: 205px;
+    bottom: 210px;
 }
 
 .Box6{
@@ -203,6 +228,7 @@
     height: 24px;
     margin-left: 40px;
     margin-right: 40px;
+    cursor: pointer;
 }
 .transparent-checkbox {
     opacity: 0.5;
