@@ -85,8 +85,8 @@ const Register = () => {
                     <div className='Info'>
                      <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
                      {showMessage && (
-                      <div className= 'HoverMessage' title={t("HoverMessage")} >
-                        Email is used for Communication purpose.
+                      <div className= 'HoverMessage' >
+                        {t("HoverMessage")}
                         <span className='arrow-down'></span>
                       </div>
                     )}
