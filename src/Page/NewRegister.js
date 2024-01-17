@@ -82,19 +82,19 @@ const Register = () => {
                   <div className='Email'>
                     <input type='Email' placeholder={t("Email")} required />
                   </div>
-                    <div className='Info'>
-                     <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
-                     {showMessage && (
-                      <div className= 'HoverMessage' >
-                        {t("HoverMessage")}
-                        <span className='arrow-down'></span>
-                      </div>
-                    )}
+                  <div className='Info'>
+                    <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
+                      {showMessage && (
+                        <div className= 'HoverMessage' >
+                          {t("HoverMessage")}
+                          <span className='arrow-down'></span>
+                        </div>
+                      )}
                       <FaCircleInfo />
                     </div>
                   </div>
-                 </div><br />
-                  <div className='Box3'>
+                </div><br />
+                <div className='Box3'>
                   <div className='CountryList'>
                     <select
                       onChange={(e) => handleCountryChange(e.target.value)}
@@ -107,38 +107,38 @@ const Register = () => {
                       ))}
                     </select>
                   </div>
-                    <div className='Number'>
-                     <input type='tel' placeholder={t("MobileNumber")} required/> 
-                    </div>
-                  </div><br />
-                 <div className='Box4'>
-                    <div className='Password'>
-                      <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required />
-                      <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
-                       {showPassword ? t("Hide") : t("Show")}
-                      </button>
-                    </div>
-                 </div><br />
-                 <div className='Box5'>
-                    <div className='Confrim-Password'>
-                      <input type={showconfimpassword ? 'text' : 'password'} placeholder={t("ConfrimPassword")} required />
+                  <div className='Number'>
+                    <input type='tel' placeholder={t("MobileNumber")} required/> 
+                  </div>
+                </div><br />
+                <div className='Box4'>
+                  <div className='Password'>
+                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required />
+                    <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
+                      {showPassword ? t("Hide") : t("Show")}
+                    </button>
+                  </div>
+               </div><br />
+                <div className='Box5'>
+                  <div className='Confrim-Password'>
+                    <input type={showconfimpassword ? 'text' : 'password'} placeholder={t("ConfrimPassword")} required />
                       <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
                         {showconfimpassword ? t("Hide") : t("Show")}
                       </button>
                     </div>
                  </div><br />
-                 <div className='Box6'>
-                  <div className='CheckBox'>
-                   <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" required/>
-                  </div>
-                  <div className='Notice'>
-                    <h6>{t("Notice")}</h6>
-                  </div>
-                 </div>
-                  <div className='SubmitButton'>
-                    <button type='submit'>{t("CreateAccount")}</button>
-                  </div>
-            </div>
+              <div className='Box6'>
+                <div className='CheckBox'>
+                  <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" required/>
+                </div>
+                <div className='Notice'>
+                  <h6>{t("Notice")}</h6>
+                </div>
+              </div>
+                <div className='SubmitButton'>
+                  <button type='submit'>{t("CreateAccount")}</button>
+                </div>
+             </div>
             </form>
           </section>
           <FooterOption />
