@@ -9,7 +9,7 @@ import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
 import '../Utils/FormValidation';
-import PhoneInput from 'react-phone-input-2';
+// import PhoneInput from 'react-phone-input-2';
 
 const Register = () => {
   const { t } = useTranslation(); // Traslation for all page and it's input
@@ -18,7 +18,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const [showconfimpassword, setShowconfimPassword] = useState(false);  // Show ConfimPaaword
   const [selectedCountry, setSelectedCountry] = useState('');  // CountryCode
-  const [phoneNumber, setPhoneNumber] = useState('');
+  // const [phoneNumber, setPhoneNumber] = useState('');
   const [showMessage, setShowMessage] = useState(false); // info mail message
 
   const changeLanguage = (newLanguage) => {
@@ -37,11 +37,11 @@ const Register = () => {
     setSelectedCountry(value);
   };
 
-  const handlePhoneChange = (value, country) => {
-    console.log('Selected country: ', country);
-    console.log('Phone number: ', value);
-    setPhoneNumber(value);
-  };
+  // const handlePhoneChange = (value, country) => {
+  //   console.log('Selected country: ', country);
+  //   console.log('Phone number: ', value);
+  //   setPhoneNumber(value);
+  // };
 
   // Move useNavigate outside of the handleToLogin function
   const navigate = useNavigate();
