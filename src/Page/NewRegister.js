@@ -9,15 +9,17 @@ import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
 import '../Utils/FormValidation';
+import PhoneInput from 'react-phone-input-2';
 
 const Register = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); // Traslation for all page and it's input
   const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"; // Language Direction
-  const language = i18n.language === "عربي";
+  const language = i18n.language === "عربي"; // chnage show and hide password direction
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const [showconfimpassword, setShowconfimPassword] = useState(false);  // Show ConfimPaaword
-  const [selectedCountry, setSelectedCountry] = useState(null);  // CountryCode
-  const [showMessage, setShowMessage] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState('');  // CountryCode
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [showMessage, setShowMessage] = useState(false); // info mail message
 
   const changeLanguage = (newLanguage) => {
     i18n.changeLanguage(newLanguage);
@@ -33,6 +35,12 @@ const Register = () => {
 
   const handleCountryChange = (value) => {
     setSelectedCountry(value);
+  };
+
+  const handlePhoneChange = (value, country) => {
+    console.log('Selected country: ', country);
+    console.log('Phone number: ', value);
+    setPhoneNumber(value);
   };
 
   // Move useNavigate outside of the handleToLogin function
@@ -99,8 +107,8 @@ const Register = () => {
                       ))}
                     </select>
                   </div>
-                    <div className='MobileNumber'>
-                     <input type='positiveNumber' placeholder={t("MobileNumber")} required/> 
+                    <div className='Number'>
+                     <input type='tel' placeholder={t("MobileNumber")} required/> 
                     </div>
                   </div><br />
                  <div className='Box4'>

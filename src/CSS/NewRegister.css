@@ -136,7 +136,7 @@
   background-color: transparent;
 }
 
-.MobileNumber input{ 
+.Number input{ 
   width: 300px;
   height: 40px;
   background: rgba(255, 255, 255, 0.2);
@@ -254,6 +254,7 @@
 .SubmitButton {
     display: flex;
     justify-content: center;
+    margin-top: -5%;
   }
 
 .SubmitButton button{
