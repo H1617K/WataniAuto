@@ -137,6 +137,10 @@
   background-color: transparent;
 }
 
+.CountryList select option{
+    color: black;
+}
+
 .Number input{ 
   width: 300px;
   height: 40px;
