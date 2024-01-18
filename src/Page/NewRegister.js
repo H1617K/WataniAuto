@@ -130,16 +130,16 @@ const Register = () => {
                 <div className='Box4'>
                   <div className='Password'>
                   {FocusedPassword && (<div className='Password-Validation'> 
-                    <h6>Password must have</h6>
+                    <h6>{t("Passwordmusthave")}</h6>
                     <div className='Line'>
                       <hr/>
                     </div> <br/>
                       <ul className="requirements">
-                        <li>8 to 15 characters,</li>
-                        <li>1 Uppercase(A-Z), </li>
-                        <li>1 lower case(a-z),</li>
-                        <li>1 number (0-9) and</li>
-                        <li>1 special character like @,$,%, and &.</li>
+                        <li>{t("Condiction1")}</li>
+                        <li>{t("Condiction2")}</li>
+                        <li>{t("Condiction3")}</li>
+                        <li>{t("Condiction4")}</li>
+                        <li>{t("Condiction5")}</li>
                       </ul><span className='right-arrow'></span>
                     </div>)}
                     <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required  onFocus={onFocusedPassword} onBlur={onBlurPassword}/>

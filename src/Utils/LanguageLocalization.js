@@ -43,6 +43,14 @@ i18n
                 ConfirmPasswordError: "Password Doesn't Match",
                 Notice: "By creating a watani account, I agree to the Terms of Use, and Privacy Notice.",
                 CreateAccount: "Create Account",
+
+                //PasswordValidation
+                Passwordmusthave : "Password must have",
+                Condiction1 :"8 to 15 characters,",
+                Condiction2 :"1 Uppercase(A-Z),",
+                Condiction3 :"1 lower case(a-z),",
+                Condiction4 :"1 number (0-9) and",
+                Condiction5 :"1 special character like @,$,%, and &.",
             }
         },
         عربي: {
@@ -79,6 +87,14 @@ i18n
                 ConfirmPasswordError: "كلمة المرور غير متطابقة",
                 Notice: "بإنشاء حساب وطني، فإنني أوافق على شروط الاستخدام وإشعار الخصوصية.",
                 CreateAccount: "إنشاء حساب", 
+
+                //PasswordValidation
+                Passwordmusthave : "يجب أن يكون لديك كلمة المرور",
+                Condiction1 :"من 8 إلى 15 حرفًا،",
+                Condiction2 :"1 حرف كبير (من A إلى Z)،",
+                Condiction3 :"1 حالة صغيرة (من a إلى z)،",
+                Condiction4 :"1 رقم (0-9) و",
+                Condiction5 :"حرف خاص واحد مثل @ و$ و% و&.",
             }
         }
     }
