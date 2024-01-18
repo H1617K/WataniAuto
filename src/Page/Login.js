@@ -4,9 +4,10 @@ import { FooterOption } from '../Component/Footer/Footer';
 import '../CSS/Login.css';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import { useFormValidation } from '../Utils/FormValidation';
+// import { useFormValidation } from '../Utils/FormValidation';
 import i18n from '../Utils/LanguageLocalization';
 import { useTranslation } from 'react-i18next';
+import { useFormValidations } from '../Utils/formValidations';
 
 const Login = () => {
   const navigate = useNavigate(); // Navigation 
@@ -61,7 +62,7 @@ const Login = () => {
   const { email, password, isEmailFocused, 
     setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
     handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
-  }= useFormValidation()
+  }= useFormValidations()
 
   return (
     <section>

@@ -12,7 +12,7 @@ export const isValidPassword = (password) => {
   return passwordRegex.test(password);
 }
 
-export const useFormValidation = () => {
+export const useFormValidations = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
   const [emailError, setEmailError] = useState("")

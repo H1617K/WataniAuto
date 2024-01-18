@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
-import { useFormValidation } from '../Utils/FormValidation';
+import { useFormValidations } from '../Utils/formValidations';
 // import PhoneInput from 'react-phone-input-2';
 
 const Register = () => {
@@ -69,7 +69,7 @@ const Register = () => {
   const { email, password, isEmailFocused, 
     setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
     handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
-  }= useFormValidation()
+  }= useFormValidations()
 
 
   return (
