@@ -130,7 +130,7 @@ const Register = () => {
                 <div className='Box4'>
                   <div className='Password'>
                   {FocusedPassword && (<div className='Password-Validation'> 
-                    <h6>{t("Passwordmusthave")}</h6>
+                    <h6>{t("Password must have")}</h6>
                     <div className='Line'>
                       <hr/>
                     </div> <br/>
