@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
-import '../Utils/FormValidation';
+import { useFormValidation } from '../Utils/FormValidation';
 // import PhoneInput from 'react-phone-input-2';
 
 const Register = () => {
@@ -20,6 +20,16 @@ const Register = () => {
   const [selectedCountry, setSelectedCountry] = useState('');  // CountryCode
   // const [phoneNumber, setPhoneNumber] = useState('');
   const [showMessage, setShowMessage] = useState(false); // info mail message
+  const [FocusedPassword, setFocuedPassword] = useState(false);
+
+  const onFocusedPassword = () => {
+    setFocuedPassword (true);
+  }
+
+  const onBlurPassword = () => {
+    setFocuedPassword (false)
+  }
+
 
   const changeLanguage = (newLanguage) => {
     i18n.changeLanguage(newLanguage);
@@ -55,6 +65,12 @@ const Register = () => {
     // Handle form submission logic here
     console.log("Form submitted!");
   };
+
+  const { email, password, isEmailFocused, 
+    setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
+    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
+  }= useFormValidation()
+
 
   return (
     <>
@@ -113,7 +129,20 @@ const Register = () => {
                 </div><br />
                 <div className='Box4'>
                   <div className='Password'>
-                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required />
+                  {FocusedPassword && (<div className='Password-Validation'> 
+                    <h6>Password must have</h6>
+                    <div className='Line'>
+                      <hr/>
+                    </div> <br/>
+                      <ul className="requirements">
+                        <li>8 to 15 characters,</li>
+                        <li>1 Uppercase(A-Z), </li>
+                        <li>1 lower case(a-z),</li>
+                        <li>1 number (0-9) and</li>
+                        <li>1 special character like @,$,%, and &.</li>
+                      </ul><span className='right-arrow'></span>
+                    </div>)}
+                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required  onFocus={onFocusedPassword} onBlur={onBlurPassword}/>
                     <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
                       {showPassword ? t("Hide") : t("Show")}
                     </button>
