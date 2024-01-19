@@ -68,7 +68,8 @@ const Register = () => {
 
   const { email, password, isEmailFocused, 
     setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
-    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
+    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange, 
+    requirements, passwordRequirements, handlePasswordRegisterChange
   }= useFormValidations()
 
 
@@ -129,20 +130,24 @@ const Register = () => {
                 </div><br />
                 <div className='Box4'>
                   <div className='Password'>
-                  {FocusedPassword && (<div className='Password-Validation'> 
-                    <h6>{t("Password must have")}</h6>
-                    <div className='Line'>
-                      <hr/>
-                    </div> <br/>
-                      <ul className="requirements">
-                        <li>{t("Condiction1")}</li>
-                        <li>{t("Condiction2")}</li>
-                        <li>{t("Condiction3")}</li>
-                        <li>{t("Condiction4")}</li>
-                        <li>{t("Condiction5")}</li>
-                      </ul><span className='right-arrow'></span>
+                { FocusedPassword && (<div className={`Password-Validation`}>
+                <h6>{t("Passwordmusthave")}</h6>
+                <div className='Line'>
+                 <hr/>
+                </div>
+                <ul className="requirements">
+                  {requirements.map((req, index) => (
+                    <li key={index} className={passwordRequirements[index].isValid ? "valid" : "invalid"}>
+                      <div className="icon-container">
+                        <span className="icon">&#9898;</span> 
+                        {passwordRequirements[index].isValid && <span className="checkmark">&#10003;</span>} 
+                        <span className='requirement-label'>{req.lable}</span>
+                        </div>
+                    </li>
+                  ))}
+                </ul><span className='right-arrow'></span>
                     </div>)}
-                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required  onFocus={onFocusedPassword} onBlur={onBlurPassword}/>
+                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required  onFocus={onFocusedPassword} onChange={handlePasswordRegisterChange}/>
                     <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
                       {showPassword ? t("Hide") : t("Show")}
                     </button>

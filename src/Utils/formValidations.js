@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 
 
 export const isValidEmail = (email) => {
@@ -11,6 +12,8 @@ export const isValidPassword = (password) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordRegex.test(password);
 }
+
+
 
 export const useFormValidations = () => {
   const [email, setEmail] = useState('')
@@ -29,6 +32,37 @@ export const useFormValidations = () => {
     setPassword(e.target.value);
     setPasswordError('');
   };
+
+  const { t } = useTranslation();
+
+
+      const requirements = [
+        { regex: /.{8,15}/,lable: t("Condiction1") ,index: 0 },
+        { regex: /[A-Z]/,lable:t("Condiction2") , index: 1 },
+        { regex: /[a-z]/,lable: t("Condiction3"), index: 2 },
+        { regex: /[0-9]/,lable: t("Condiction4"), index: 3 },
+        { regex: /[^A-Za-z0-9]/, lable:t("Condiction5") , index: 4 },
+      ]
+
+      const [passwordRequirements, setPasswordRequirements] = useState(
+        Array.from({ length: requirements.length }, () => ({ isValid: false }))
+      );
+
+      const updatePasswordRequirements = (password) => {
+        const updatedRequirements = requirements.map((req) => ({
+          isValid: req.regex.test(password),
+        }));
+        setPasswordRequirements(updatedRequirements);
+      };
+
+      const handlePasswordRegisterChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        setPasswordError("");
+
+        // Update password requirements feedback
+        updatePasswordRequirements(newPassword);
+      };
 
   const handlerSubmit = (e) => {
     e.preventDefault()
@@ -55,6 +89,9 @@ export const useFormValidations = () => {
     }
   }
   return {
-    email, password, setEmail, setPassword, isEmailFocused, setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange, formData
+    email, password, setEmail, setPassword, 
+    isEmailFocused, setIsEmailFocused, isPasswordFocused,
+     setIsPasswordFocused, handlerSubmit, emailError, passwordError,
+      handleEmailChange, handlePasswordChange, formData, requirements, passwordRequirements, handlePasswordRegisterChange
   }
 }
