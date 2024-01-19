@@ -1,4 +1,3 @@
-
 .back-img img{
   height: 1024px;
   width: 100%;
@@ -32,78 +31,78 @@
   left: 0;
 }
 
-  .language-container {
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    margin-right: 10%;
-  }
+.language-container {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  margin-right: 10%;
+}
 
-  .lang-dropdown-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: #fff; 
-  }
+.lang-dropdown-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff; 
+}
 
-  .lang-dropdown-content {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-    background-color: rgba(2, 2, 2, 0.2);
-    color: white;
-  }
+.lang-dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  background-color: rgba(2, 2, 2, 0.2);
+  color: white;
+}
 
-  .lang-dropdown-content button {
-    text-decoration: none;
-    display: block;
-    border: none;
-    width: 100px;
-    height: 40px;
-    cursor: pointer;
-    background-color:transparent;
-  }
+.lang-dropdown-content button {
+  text-decoration: none;
+  display: block;
+  border: none;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  background-color:transparent;
+}
 
-  .lang-dropdown-content button:hover {
-    background-color: rgba(12, 11, 11, 0.5);
-  }
+.lang-dropdown-content button:hover {
+  background-color: rgba(12, 11, 11, 0.5);
+}
 
-  .lang-dropdown:hover .lang-dropdown-content {
-    display: block;
-  }
+.lang-dropdown:hover .lang-dropdown-content {
+  display: block;
+}
   
-  .lang-dropdown-content button {
-    font-family: "Sofia Pro", sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 100;
-    /* line-height: 10px;   */
-    letter-spacing: -0.408px;
-    cursor: pointer;
-  }
+.lang-dropdown-content button {
+  font-family: "Sofia Pro", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 100;
+  letter-spacing: -0.408px;
+  cursor: pointer;
+}
 
-  .lang-dropdown {
-    position: relative;
-  }
+.lang-dropdown {
+  position: relative;
+}
 
-  .Main-Login-form{
-    display: flex;
-    justify-content: center;
-    height: 550px;
-    right: 10%;
-    position: absolute;
-    top: 30%;
-    width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-  }
-  .Box-heder-Welcome h2{
-    color: white;
-    margin-left: -8%;
-    margin-top: 15%;
-  }
+.Main-Login-form{
+  display: flex;
+  justify-content: center;
+  height: 550px;
+  right: 10%;
+  position: absolute;
+  top: 30%;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.Box-heder-Welcome h2{
+  color: white;
+  margin-left: -8%;
+  margin-top: 15%;
+}
 
 .Box-Email {
   position: relative;
