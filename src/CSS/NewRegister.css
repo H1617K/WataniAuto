@@ -92,6 +92,7 @@
     margin-left: 235px;
     margin-right:  235px;
 }
+
 .HoverMessage{
     position: absolute;
     font-size: 12px;
@@ -190,30 +191,30 @@
 }
 
 .Password-Validation{
-   position: absolute;
+    position: absolute;
     top: 270px;
-    left: -315px;
+    left: -276px;
     right: 490px;
     height: 180px;
-    width: 320px;
+    width: 283px;
     background-color: white;
     color: black;
 }
 .Password-Validation h6{
     font-size: medium;
-    margin-left: 70px;
+    margin-left: 25px;
     margin-right: 40px;
     margin-top: 10px;
-    height: 20px;
+    height: 21px;
 }
 .Line{
-    color: black;
-    width: 250px;
-    margin-left: 30px;
+    color: gray;
+    width: 220px;
+    margin-left: 20px;
     margin-right: 30px;
     margin-top: -25px;
 }
-.requirements{
+.requirements li{
     font-family: "Sofia Pro";
     color: #263238;
     font-style: normal;
@@ -234,6 +235,7 @@
 .icon-container {
     display: flex;
     align-items: center;
+    margin-left: -25px;
   }
   
   .icon {
@@ -248,13 +250,13 @@
   .requirement-label{
     margin-right: 13px;
     position: relative;
-    color: #263238;
-  font-family: "Sofia Pro";
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px; 
-  letter-spacing: 0.59px;
+    color: gray;
+    font-family: "Sofia Pro";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+    letter-spacing: 0.59px;
   }
   
   .valid .requirement-label{
@@ -271,7 +273,7 @@
     border-bottom: 8px solid transparent;
     border-top: 8px solid transparent;
     margin-top: -50px;
-    margin-left: 320px;
+    margin-left: 283.5px;
     margin-right: -8px;
 }
 
