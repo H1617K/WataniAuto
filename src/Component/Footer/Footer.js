@@ -14,7 +14,7 @@ export const FooterOption = ({
   divClassName3,
   divClassName4,
 }) => {
-        const { t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className={`footer-option ${className}`}>
       <div className={`text-wrapper ${divClassNameOverride}`}>{t("AboutUs")}</div>

@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 export const isValidEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email)
-;
+  return emailRegex.test(email);
 }
 
 export const isValidPassword = (password) => {
@@ -36,46 +35,43 @@ export const useFormValidations = () => {
   const { t } = useTranslation();
 
 
-      const requirements = [
-        { regex: /.{8,15}/,lable: t("Condiction1") ,index: 0 },
-        { regex: /[A-Z]/,lable:t("Condiction2") , index: 1 },
-        { regex: /[a-z]/,lable: t("Condiction3"), index: 2 },
-        { regex: /[0-9]/,lable: t("Condiction4"), index: 3 },
-        { regex: /[^A-Za-z0-9]/, lable:t("Condiction5") , index: 4 },
-      ]
+  const requirements = [
+    { regex: /.{8,15}/,lable: t("Condiction1") ,index: 0 },
+    { regex: /[A-Z]/,lable:t("Condiction2") , index: 1 },
+    { regex: /[a-z]/,lable: t("Condiction3"), index: 2 },
+    { regex: /[0-9]/,lable: t("Condiction4"), index: 3 },
+    { regex: /[^A-Za-z0-9]/, lable:t("Condiction5") , index: 4 },
+  ]
 
-      const [passwordRequirements, setPasswordRequirements] = useState(
-        Array.from({ length: requirements.length }, () => ({ isValid: false }))
-      );
+  const [passwordRequirements, setPasswordRequirements] = useState(
+    Array.from({ length: requirements.length }, () => ({ isValid: false }))
+  );
 
-      const updatePasswordRequirements = (password) => {
-        const updatedRequirements = requirements.map((req) => ({
-          isValid: req.regex.test(password),
-        }));
-        setPasswordRequirements(updatedRequirements);
-      };
+  const updatePasswordRequirements = (password) => {
+    const updatedRequirements = requirements.map((req) => ({
+     Valid: req.regex.test(password),
+    }));
+    setPasswordRequirements(updatedRequirements);
+  };
 
-      const handlePasswordRegisterChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        setPasswordError("");
+  const handlePasswordRegisterChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    setPasswordError("");
+    // Update password requirements feedback
+    updatePasswordRequirements(newPassword);
+  };
 
-        // Update password requirements feedback
-        updatePasswordRequirements(newPassword);
-      };
-
-  const handlerSubmit = (e) => {
+ const handlerSubmit = (e) => {
     e.preventDefault()
 
     if (!isValidEmail(email)) {
       setEmailError("Please enter the Correct email id.")
     }
     if (!isValidPassword(password))
-      setPasswordError("please enter the Correct Password.")
-
+    setPasswordError("please enter the Correct Password.")
     if (isValidEmail(email)
- && isValidPassword(password)) {
-
+    && isValidPassword(password)) {
       setEmail("")
       setPassword("")
       setIsEmailFocused(false)
@@ -91,7 +87,7 @@ export const useFormValidations = () => {
   return {
     email, password, setEmail, setPassword, 
     isEmailFocused, setIsEmailFocused, isPasswordFocused,
-     setIsPasswordFocused, handlerSubmit, emailError, passwordError,
-      handleEmailChange, handlePasswordChange, formData, requirements, passwordRequirements, handlePasswordRegisterChange
+    setIsPasswordFocused, handlerSubmit, emailError, passwordError,
+    handleEmailChange, handlePasswordChange, formData, requirements, passwordRequirements, handlePasswordRegisterChange
   }
 }

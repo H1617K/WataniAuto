@@ -22,6 +22,7 @@ const Register = () => {
   const [showMessage, setShowMessage] = useState(false); // info mail message
   const [FocusedPassword, setFocuedPassword] = useState(false);
   const [emailPlaceholder, setEmailPlaceholder] = useState("Email*");
+  const navigate = useNavigate(); // Move useNavigate outside of the handleToLogin function
 
   useEffect(() => {
     setEmailPlaceholder(t("Email"))
@@ -66,9 +67,6 @@ const Register = () => {
   //   setPhoneNumber(value);
   // };
 
-  // Move useNavigate outside of the handleToLogin function
-  const navigate = useNavigate();
-
   const handleToLogin = () => {
     navigate('/Login');
   };
@@ -103,22 +101,22 @@ const Register = () => {
                 </div><br />
                 <div className='Box2'>
                   <div className='Email'>
-                  {isEmailFocused && <label className="Label-Email">{t("Email")}</label>}
-                  <input
-                    type="email"
-                    className={emailError ? 'error' : ''}
-                    name="email"
-                    value={email}
-                    placeholder={emailPlaceholder}
-                    onChange={handleEmailChange}
-                    onFocus={onFocus}
-                    onBlur={handleEmailBlur}
-                    maxLength={30}
-                    required
-                  />
-                  <div className={`error-container1 ${emailError ? 'show' : ''}`}>
-                    {(emailError) && <div className='error-message1'>{t("emailError")}<span className='arrow-right'></span></div>}
-                  </div>
+                    {isEmailFocused && <label className="Label-Email">{t("Email")}</label>}
+                    <input
+                      type="email"
+                      className={emailError ? 'error' : ''}
+                      name="email"
+                      value={email}
+                      placeholder={emailPlaceholder}
+                      onChange={handleEmailChange}
+                      onFocus={onFocus}
+                      onBlur={handleEmailBlur}
+                      maxLength={30}
+                      required
+                      />
+                    <div className={`error-container1 ${emailError ? 'show' : ''}`}>
+                      {(emailError) && <div className='error-message1'>{t("emailError")}<span className='arrow-right'></span></div>}
+                    </div>
                   </div>
                   <div className='Info'>
                     <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
@@ -151,50 +149,50 @@ const Register = () => {
                 </div><br />
                 <div className='Box4'>
                   <div className='Password'>
-                { FocusedPassword && (<div className={`Password-Validation`}>
-                <h6>{t("Passwordmusthave")}</h6>
-                <div className='Line'>
-                 <hr/>
-                </div>
-                <ul className="requirements">
-                  {requirements.map((req, index) => (
-                    <li key={index} className={passwordRequirements[index].isValid ? "valid" : "invalid"}>
-                      <div className="icon-container">
-                        <span className="icon">&#9898;</span> 
-                        {passwordRequirements[index].isValid && <span className="checkmark">&#10003;</span>} 
-                        <span className='requirement-label'>{req.lable}</span>
-                        </div>
-                    </li>
-                  ))}
-                </ul><span className='right-arrow'></span>
+                    { FocusedPassword && (<div className={`Password-Validation`}>
+                      <h6>{t("Passwordmusthave")}</h6>
+                      <div className='Line'>
+                        <hr/>
+                     </div>
+                      <ul className="requirements">
+                        {requirements.map((req, index) => (
+                          <li key={index} className={passwordRequirements[index].isValid ? "valid" : "invalid"}>
+                            <div className="icon-container">
+                              <span className="icon">&#9898;</span> 
+                              {passwordRequirements[index].isValid && <span className="checkmark">&#10003;</span>} 
+                              <span className='requirement-label'>{req.lable}</span>
+                            </div>
+                          </li>
+                        ))}
+                      </ul><span className='right-arrow'></span>
                     </div>)}
                     { FocusedPassword && <label className="Label-Holder-Password">{t("Password")}</label>}
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    className={passwordError ? 'error' : ''}
-                    name="password"
-                    value={password}
-                    placeholder={FocusedPassword ? '' : t("Password")}
-                    onChange={handlePasswordRegisterChange}
-                    onFocus={onFocusedPassword}
-                    onBlur={onBlurPassword}
-                    minLength={8}
-                    maxLength={15}
-                    required
-                  />
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        className={passwordError ? 'error' : ''}
+                        name="password"
+                        value={password}
+                        placeholder={FocusedPassword ? '' : t("Password")}
+                        onChange={handlePasswordRegisterChange}
+                        onFocus={onFocusedPassword}
+                        onBlur={onBlurPassword}
+                        minLength={8}
+                        maxLength={15}
+                        required
+                      />
                     <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
-                      {showPassword ? t("Hide") : t("Show")}
-                    </button>
+                        {showPassword ? t("Hide") : t("Show")}
+                     </button>
                   </div>
                </div><br />
                 <div className='Box5'>
                   <div className='Confrim-Password'>
                     <input type={showconfimpassword ? 'text' : 'password'} placeholder={t("ConfrimPassword")} required />
-                      <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
-                        {showconfimpassword ? t("Hide") : t("Show")}
-                      </button>
-                    </div>
-                 </div><br />
+                    <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
+                      {showconfimpassword ? t("Hide") : t("Show")}
+                    </button>
+                  </div>
+                </div><br />
               <div className='Box6'>
                 <div className='CheckBox'>
                   <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" required/>
