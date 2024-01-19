@@ -23,7 +23,7 @@ const Login = () => {
   //Email--Place Holder--Blur--OnFocused
   useEffect(() => {
     setEmailPlaceholder(t("Email"))
-  }, [i18n.language])
+  }, [t])
 
   const handleEmailBlur = () => {
     setEmailPlaceholder(t("Email"));

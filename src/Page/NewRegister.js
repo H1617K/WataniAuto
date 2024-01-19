@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { img1, img5,  } from '../Component/Images';
 import '../CSS/NewRegister.css';
 import { FooterOption } from '../Component/Footer/Footer';
@@ -21,6 +21,11 @@ const Register = () => {
   // const [phoneNumber, setPhoneNumber] = useState('');
   const [showMessage, setShowMessage] = useState(false); // info mail message
   const [FocusedPassword, setFocuedPassword] = useState(false);
+  const [emailPlaceholder, setEmailPlaceholder] = useState("Email*");
+
+  useEffect(() => {
+    setEmailPlaceholder(t("Email"))
+  },[t])
 
   const onFocusedPassword = () => {
     setFocuedPassword (true);
@@ -30,6 +35,14 @@ const Register = () => {
     setFocuedPassword (false)
   }
 
+  const handleEmailBlur = () => {
+    setEmailPlaceholder(t("Email"));
+    setIsEmailFocused(email !== '');
+  };
+  
+  const onFocus = () => {
+    setEmailPlaceholder(true);
+  }
 
   const changeLanguage = (newLanguage) => {
     i18n.changeLanguage(newLanguage);
@@ -60,15 +73,8 @@ const Register = () => {
     navigate('/Login');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted!");
-  };
-
   const { email, password, isEmailFocused, 
-    setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
-    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange, 
+    setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
     requirements, passwordRequirements, handlePasswordRegisterChange
   }= useFormValidations()
 
@@ -79,7 +85,7 @@ const Register = () => {
         <div className="back-img">
           <img src={img5} alt="img" />
           <section>
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handlerSubmit} noValidate>
               <div className='Main-Register-form'>
                 <div className='Back-To-Login'>
                   <button type='button' onClick={handleToLogin}><FaArrowLeft /></button>
@@ -97,7 +103,22 @@ const Register = () => {
                 </div><br />
                 <div className='Box2'>
                   <div className='Email'>
-                    <input type='Email' placeholder={t("Email")} required />
+                  {isEmailFocused && <label className="Label-Email">{t("Email")}</label>}
+                  <input
+                    type="email"
+                    className={emailError ? 'error' : ''}
+                    name="email"
+                    value={email}
+                    placeholder={emailPlaceholder}
+                    onChange={handleEmailChange}
+                    onFocus={onFocus}
+                    onBlur={handleEmailBlur}
+                    maxLength={30}
+                    required
+                  />
+                  <div className={`error-container1 ${emailError ? 'show' : ''}`}>
+                    {(emailError) && <div className='error-message1'>{t("emailError")}<span className='arrow-right'></span></div>}
+                  </div>
                   </div>
                   <div className='Info'>
                     <div className='InfoContainer' onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)}>
@@ -147,7 +168,20 @@ const Register = () => {
                   ))}
                 </ul><span className='right-arrow'></span>
                     </div>)}
-                    <input type={showPassword ? 'text' : 'password'} placeholder={t("Password")} required  onFocus={onFocusedPassword} onChange={handlePasswordRegisterChange}/>
+                    { FocusedPassword && <label className="Label-Holder-Password">{t("Password")}</label>}
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className={passwordError ? 'error' : ''}
+                    name="password"
+                    value={password}
+                    placeholder={FocusedPassword ? '' : t("Password")}
+                    onChange={handlePasswordRegisterChange}
+                    onFocus={onFocusedPassword}
+                    onBlur={onBlurPassword}
+                    minLength={8}
+                    maxLength={15}
+                    required
+                  />
                     <button type='button' className={`tooggle-password1 ${language ? "Show_passwordbutton" : ''}`} onClick={toogglePasswordVisibility} >
                       {showPassword ? t("Hide") : t("Show")}
                     </button>
