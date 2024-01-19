@@ -49,7 +49,7 @@ export const useFormValidations = () => {
 
   const updatePasswordRequirements = (password) => {
     const updatedRequirements = requirements.map((req) => ({
-     Valid: req.regex.test(password),
+     isValid: req.regex.test(password),
     }));
     setPasswordRequirements(updatedRequirements);
   };
