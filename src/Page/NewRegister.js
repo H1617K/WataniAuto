@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { img1, img5,  } from '../Component/Images';
 import '../CSS/NewRegister.css';
 import { FooterOption } from '../Component/Footer/Footer';
@@ -21,28 +21,24 @@ const Register = () => {
   // const [phoneNumber, setPhoneNumber] = useState('');
   const [showMessage, setShowMessage] = useState(false); // info mail message
   const [FocusedPassword, setFocuedPassword] = useState(false);
-  const [emailPlaceholder, setEmailPlaceholder] = useState("Email*");
   const navigate = useNavigate(); // Move useNavigate outside of the handleToLogin function
-
-  useEffect(() => {
-    setEmailPlaceholder(t("Email"))
-  },[t])
 
   const onFocusedPassword = () => {
     setFocuedPassword (true);
+    setIsPasswordFocused(true);
   }
 
   const onBlurPassword = () => {
     setFocuedPassword (false)
+    setIsPasswordFocused(password !== '');
   }
 
   const handleEmailBlur = () => {
-    setEmailPlaceholder(t("Email"));
     setIsEmailFocused(email !== '');
   };
   
   const onFocus = () => {
-    setEmailPlaceholder(true);
+    setIsEmailFocused(true);
   }
 
   const changeLanguage = (newLanguage) => {
@@ -71,7 +67,7 @@ const Register = () => {
 
   const { email, password, isEmailFocused, 
     setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
-    requirements, passwordRequirements, handlePasswordRegisterChange
+    requirements, passwordRequirements, handlePasswordRegisterChange,setIsPasswordFocused,isPasswordFocused
   }= useFormValidations()
 
   return (
@@ -103,8 +99,7 @@ const Register = () => {
                       type="email"
                       className={emailError ? 'error' : ''}
                       name="email"
-                      value={email}
-                      placeholder={emailPlaceholder}
+                      placeholder={isEmailFocused ? "" : t("Email")}
                       onChange={handleEmailChange}
                       onFocus={onFocus}
                       onBlur={handleEmailBlur}
@@ -163,13 +158,13 @@ const Register = () => {
                         ))}
                       </ul><span className='right-arrow'></span>
                     </div>)}
-                    { FocusedPassword && <label className="Label-Holder-Password1">{t("Password")}</label>}
+                    { isPasswordFocused && <label className="Label-Holder-Password1">{t("Password")}</label>}
                       <input
                         type={showPassword ? 'text' : 'password'}
                         className={passwordError ? 'error' : ''}
                         name="password"
                         value={password}
-                        placeholder={FocusedPassword ? '' : t("Password")}
+                        placeholder={ isPasswordFocused ? '' : t("Password")}
                         onChange={handlePasswordRegisterChange}
                         onFocus={onFocusedPassword}
                         onBlur={onBlurPassword}
@@ -184,7 +179,9 @@ const Register = () => {
                </div><br />
                 <div className='Box5'>
                   <div className='Confrim-Password'>
-                    <input type={showconfimpassword ? 'text' : 'password'} placeholder={t("ConfrimPassword")} required />
+                    <input type={showconfimpassword ? 'text' : 'password'} 
+                    placeholder={t("ConfrimPassword")} 
+                    required />
                     <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
                       {showconfimpassword ? t("Hide") : t("Show")}
                     </button>
