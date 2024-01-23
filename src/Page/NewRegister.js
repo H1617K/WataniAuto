@@ -62,8 +62,6 @@ const Register = () => {
   };
 
   // const handlePhoneChange = (value, country) => {
-  //   console.log('Selected country: ', country);
-  //   console.log('Phone number: ', value);
   //   setPhoneNumber(value);
   // };
 
@@ -75,7 +73,6 @@ const Register = () => {
     setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
     requirements, passwordRequirements, handlePasswordRegisterChange
   }= useFormValidations()
-
 
   return (
     <>
@@ -166,7 +163,7 @@ const Register = () => {
                         ))}
                       </ul><span className='right-arrow'></span>
                     </div>)}
-                    { FocusedPassword && <label className="Label-Holder-Password">{t("Password")}</label>}
+                    { FocusedPassword && <label className="Label-Holder-Password1">{t("Password")}</label>}
                       <input
                         type={showPassword ? 'text' : 'password'}
                         className={passwordError ? 'error' : ''}
