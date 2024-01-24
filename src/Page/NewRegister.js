@@ -23,6 +23,31 @@ const Register = () => {
   const [FocusedPassword, setFocuedPassword] = useState(false);
   const navigate = useNavigate(); // Move useNavigate outside of the handleToLogin function
 
+  const [focuseField, setFocuseField] = useState ('');
+
+  const [inputValues, setInputValues] = useState(
+    {
+      FirstName: '',
+      LastName: '',
+      MobileNumber: '',
+    }
+  ) 
+
+  const handlerChange =(fieldname, value) => {
+    setInputValues ((prevValues) => ({
+      ...prevValues,
+      [fieldname]: value,
+    }))
+  }
+
+  const onfieldfocuse = (fieldname) => {
+     setFocuseField(fieldname)
+  }
+  
+  const onfieldblur = () => {
+    setFocuseField('')
+ }
+
   const onFocusedPassword = () => {
     setFocuedPassword (true);
     setIsPasswordFocused(true);
@@ -57,6 +82,14 @@ const Register = () => {
     setSelectedCountry(value);
   };
 
+  const OnConfirmPasswordFocus = () => {
+    setIsConfirmPasswordFocused(true);
+  };
+
+  const onConfirmPasswordBlur = () => {
+    setIsConfirmPasswordFocused(confirmPassword !== '');
+  };
+
   // const handlePhoneChange = (value, country) => {
   //   setPhoneNumber(value);
   // };
@@ -67,7 +100,9 @@ const Register = () => {
 
   const { email, password, isEmailFocused, 
     setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
-    requirements, passwordRequirements, handlePasswordRegisterChange,setIsPasswordFocused,isPasswordFocused
+    requirements, passwordRequirements, handlePasswordRegisterChange,setIsPasswordFocused,isPasswordFocused,
+    confirmPassword,isconfirmPasswordFocused, setIsConfirmPasswordFocused,confirmPasswordError,
+    handleConfirmPasswordChange,
   }= useFormValidations()
 
   return (
@@ -86,10 +121,22 @@ const Register = () => {
                 </div><br />
                 <div className='Box1'>
                   <div className='FristName'>
-                    <input type='text' placeholder={t("FirstName")} required />
+                  {focuseField === "FirstName" || inputValues.FirstName.length > 0 ? (<label htmlFor="FirstName">{t("FirstName")}</label>) : null}
+                    <input type='text' 
+                    placeholder={focuseField === 'FirstName' ? '' : t("FirstName")} 
+                     onFocus={() => onfieldfocuse ('FirstName')}
+                     onBlur={onfieldblur}
+                     onChange={(e) => handlerChange('FirstName', e.target.value)}
+                     required />
                   </div>
                   <div className='LastName'>
-                    <input type='text' placeholder={t("LastName")} required />
+                  {focuseField === "LastName" || inputValues.LastName.length > 0 ? (<label htmlFor="LastName">{t("LastName")}</label>) : null}
+                    <input type='text' 
+                    placeholder={focuseField === 'LastName' ? '' : t("LastName")} 
+                    onFocus={() => onfieldfocuse ('LastName')}
+                    onBlur={onfieldblur}
+                    onChange={(e) => handlerChange('LastName', e.target.value)}
+                    required />
                   </div>
                 </div><br />
                 <div className='Box2'>
@@ -136,7 +183,13 @@ const Register = () => {
                     </select>
                   </div>
                   <div className='Number'>
-                    <input type='tel' placeholder={t("MobileNumber")} required/> 
+                    {focuseField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label htmlFor="MobileNumber">{t("MobileNumber")}</label>) : null}
+                    <input type='number' 
+                    placeholder={focuseField === 'MobileNumber' ? '' : t("MobileNumber")} 
+                    onFocus={() => onfieldfocuse ('MobileNumber')}
+                    onBlur={onfieldblur}
+                    onChange={(e) => handlerChange('MobileNumber', e.target.value)} 
+                    required/> 
                   </div>
                 </div><br />
                 <div className='Box4'>
@@ -178,13 +231,31 @@ const Register = () => {
                   </div>
                </div><br />
                 <div className='Box5'>
-                  <div className='Confrim-Password'>
-                    <input type={showconfimpassword ? 'text' : 'password'} 
-                    placeholder={t("ConfrimPassword")} 
-                    required />
+                <div className='Confrim-Password'>
+                  {isconfirmPasswordFocused && (
+                    <label className="lable_confirm_pass">{t("ConfrimPassword")}</label>
+                  )}
+                  <input
+                    type={showconfimpassword ? 'text' : 'password'}
+                    id="ConfrimPassword"
+                    name="ConfrimPassword"
+                    onFocus={OnConfirmPasswordFocus}
+                    onBlur={onConfirmPasswordBlur}
+                    placeholder={isconfirmPasswordFocused ? '' : t("ConfrimPassword")}
+                    onChange={handleConfirmPasswordChange}
+                    required
+                  />
                     <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
                       {showconfimpassword ? t("Hide") : t("Show")}
                     </button>
+                    <div className={`error-container ${confirmPasswordError ? "show" : ""}`}>
+                      {confirmPasswordError && (
+                        <div className="error-message">
+                          {confirmPasswordError}
+                          <span className="arrow-right"></span>
+                        </div>
+                      )}
+                      </div>
                   </div>
                 </div><br />
               <div className='Box6'>
