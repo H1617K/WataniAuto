@@ -38,13 +38,13 @@ const countries = [
   {
     code: 'AE',
     label: 'United Arab Emirates',
-    phone: '971',
+    phone: '+971',
   },
   { code: 'AF', label: 'Afghanistan', phone: '+93' },
   {
     code: 'AG',
     label: 'Antigua and Barbuda',
-    phone: '1-268',
+    phone: '+1-268',
   },
   { code: 'AI', label: 'Anguilla', phone: '+1-264' },
   { code: 'AL', label: 'Albania', phone: '+355' },
