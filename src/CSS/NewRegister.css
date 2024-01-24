@@ -159,33 +159,17 @@
   align-items: center;
 }
 
-.CountryList select{
-  width: 80px;
-  height: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
-  color: white;
-  border: 1px solid #ccc;
-  outline: none;
-  font-weight: bold;
-  padding: 1%;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.CountryList select option{
-  color: black;
-}
-
 .Number input{ 
-  width: 300px;
+  width: 285px;
   height: 40px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 1px solid #ccc;
   outline: none;
   font-weight: bold;
-  padding: 1%;
+  padding: 2%;
+  margin-left: -5px;
+  margin-right: -6px;
 }
 
 .Box4{

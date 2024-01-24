@@ -7,8 +7,9 @@ import { FaArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { useTranslation } from 'react-i18next';
 import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
-import countryList from 'react-select-country-list';
+// import countryList from 'react-select-country-list';
 import { useFormValidations } from '../Utils/formValidations';
+import CountrySelect from '../Component/Country/CountrySelect';
 
 const Register = () => {
   const { t } = useTranslation(); // Traslation for all page and it's input
@@ -16,8 +17,8 @@ const Register = () => {
   const language = i18n.language === "عربي"; // chnage show and hide password direction
   const [showPassword, setShowPassword] = useState(false);  // Show Paaword
   const [showconfimpassword, setShowconfimPassword] = useState(false);  // Show ConfimPaaword
-  const [selectedCountry, setSelectedCountry] = useState('');  // CountryCode
-  // const [phoneNumber, setPhoneNumber] = useState('');
+  // const [selectedCountry, setSelectedCountry] = useState('');  // CountryCode
+  // // const [phoneNumber, setPhoneNumber] = useState('');
   const [showMessage, setShowMessage] = useState(false); // info mail message
   const [FocusedPassword, setFocuedPassword] = useState(false);
   const navigate = useNavigate(); // Move useNavigate outside of the handleToLogin function
@@ -77,9 +78,9 @@ const Register = () => {
     setShowconfimPassword(!showconfimpassword)
   }
 
-  const handleCountryChange = (value) => {
-    setSelectedCountry(value);
-  };
+  // const handleCountryChange = (value) => {
+  //   setSelectedCountry(value);
+  // };
 
   const OnConfirmPasswordFocus = () => {
     setIsConfirmPasswordFocused(true);
@@ -170,7 +171,7 @@ const Register = () => {
                 </div><br />
                 <div className='Box3'>
                   <div className='CountryList'>
-                    <select
+                    {/* <select
                       onChange={(e) => handleCountryChange(e.target.value)}
                       value={selectedCountry}
                     >
@@ -179,7 +180,8 @@ const Register = () => {
                           {country.label}
                         </option>
                       ))}
-                    </select>
+                    </select> */}
+                    <CountrySelect/>
                   </div>
                   <div className='Number'>
                     {focuseField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label htmlFor="MobileNumber">{t("MobileNumber")}</label>) : null}
