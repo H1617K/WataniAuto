@@ -9,7 +9,6 @@ import i18n from '../Utils/LanguageLocalization';
 import { useNavigate } from 'react-router-dom';
 import countryList from 'react-select-country-list';
 import { useFormValidations } from '../Utils/formValidations';
-// import PhoneInput from 'react-phone-input-2';
 
 const Register = () => {
   const { t } = useTranslation(); // Traslation for all page and it's input
@@ -189,6 +188,7 @@ const Register = () => {
                     onFocus={() => onfieldfocuse ('MobileNumber')}
                     onBlur={onfieldblur}
                     onChange={(e) => handlerChange('MobileNumber', e.target.value)} 
+                    maxLength={20}
                     required/> 
                   </div>
                 </div><br />
@@ -248,9 +248,9 @@ const Register = () => {
                     <button type='button' className={`tooggle-password-confim ${language ? "Confrim-Paswsword-arabic" : ''}`} onClick={tooggleConfimPasswordVisibility} >
                       {showconfimpassword ? t("Hide") : t("Show")}
                     </button>
-                    <div className={`error-container ${confirmPasswordError ? "show" : ""}`}>
+                    <div className={`error-container-confirm ${confirmPasswordError ? "show" : ""}`}>
                       {confirmPasswordError && (
-                        <div className="error-message">
+                        <div className="error-message-confim">
                           {confirmPasswordError}
                           <span className="arrow-right"></span>
                         </div>
