@@ -17,10 +17,14 @@ export const isValidPassword = (password) => {
 export const useFormValidations = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
+  const [confirmPassword,setConfirmPassword] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError,setConfirmPasswordError] = useState("")
   const [isEmailFocused, setIsEmailFocused] = useState(false)
   const [isPasswordFocused, setIsPasswordFocused] = useState(false)
+  const [isconfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false);
+
   const [formData, setFormData] = useState([])
 
   const handleEmailChange = (e) => {
@@ -31,6 +35,11 @@ export const useFormValidations = () => {
     setPassword(e.target.value);
     setPasswordError('');
   };
+
+  const handleConfirmPasswordChange = (e) =>{
+    setConfirmPassword(e.target.value);
+    setConfirmPasswordError("")
+  }
 
   const { t } = useTranslation();
 
@@ -70,12 +79,18 @@ export const useFormValidations = () => {
     }
     if (!isValidPassword(password))
     setPasswordError("please enter the Correct Password.")
+    if(password !== confirmPassword){
+      setConfirmPasswordError(t("ConfirmPasswordError"))
+    }
+
     if (isValidEmail(email)
     && isValidPassword(password)) {
       setEmail("")
       setPassword("")
+      setConfirmPassword("")
       setIsEmailFocused(false)
       setIsPasswordFocused(false)
+      setIsConfirmPasswordFocused(false);
 
       const newData = { email, password }
       setFormData((prevData) => [...prevData, newData])
@@ -85,9 +100,10 @@ export const useFormValidations = () => {
     }
   }
   return {
-    email, password, setEmail, setPassword, 
-    isEmailFocused, setIsEmailFocused, isPasswordFocused,
-    setIsPasswordFocused, handlerSubmit, emailError, passwordError,
-    handleEmailChange, handlePasswordChange, formData, requirements, passwordRequirements, handlePasswordRegisterChange
+    email, password, setEmail, setPassword,
+    confirmPassword,setConfirmPassword,isconfirmPasswordFocused, setIsConfirmPasswordFocused,confirmPasswordError,
+    setConfirmPasswordError, handleConfirmPasswordChange, isEmailFocused, setIsEmailFocused, isPasswordFocused,
+    setIsPasswordFocused, handlerSubmit, emailError, passwordError,handleEmailChange, handlePasswordChange, 
+    formData, requirements, passwordRequirements, handlePasswordRegisterChange
   }
 }
