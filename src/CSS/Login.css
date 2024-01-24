@@ -101,7 +101,7 @@
 .Box-heder-Welcome h2{
   color: white;
   margin-left: -8%;
-  margin-top: 15%;
+  margin-top: 12%;
 }
 
 .Box-Email {
@@ -127,6 +127,7 @@
   color: white;
   pointer-events: none;
   transition: all 0.3s ease;
+  margin-right: 0;
 }
 .Box-Email input.error{
   border: 2px solid red;
@@ -167,6 +168,7 @@
   color: white;
   pointer-events: none;
   transition: all 0.3s ease;
+  margin-right: 0;
 }
 
 .Box1-password input{

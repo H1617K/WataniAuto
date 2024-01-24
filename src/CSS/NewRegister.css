@@ -361,6 +361,28 @@
   right: 420px;
 }
 
+.error-container-confirm{
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.error-message-confim{
+  display: none;
+  position: relative;
+  right: 100%;
+  transform: translateY(-595%);
+  background-color: red;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.error-container-confirm.show .error-message-confim {
+  display: block;
+}
+
 .Box6{
   display: flex;
   flex-direction: row;
