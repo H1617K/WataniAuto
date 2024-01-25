@@ -13,7 +13,7 @@ export default function CountrySelect() {
       sx={{ width: 100 }}
       getOptionLabel={(option) => option.phone}
       renderOption={(props, option) => (
-        <Box component="li"  {...props}>
+        <Box component="li" sx={{width:200}} {...props}>
           {option.label}  {option.phone}
         </Box>
       )}

@@ -46,6 +46,21 @@
   justify-content: space-evenly;
   margin-top: -4%;
 }
+.FirstName-lable{
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  margin-top: -20px;
+}
+
+.LastName-lable{
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  margin-top: -20px;
+}
 
 .Box1 input{
   width: 192px;
@@ -159,6 +174,16 @@
   align-items: center;
 }
 
+.MobileNumber-lable{
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  margin-top: -20px;
+  margin-left: -140px;
+  margin-right: -140px;
+}
+
 .Number input{ 
   width: 285px;
   height: 40px;
@@ -195,7 +220,7 @@
 .tooggle-password1{
   position: absolute;
   right: 35px;
-  top: 55.5%;
+  top: 56%;
   background: none;
   border: none;
   color: white;
@@ -328,6 +353,16 @@
   margin-right: 10%;
 }
 
+.lable_confirm_pass{
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: -15px;
+}
+
 .tooggle-password-confim{
   position: absolute;
   right: 35px;
@@ -338,7 +373,7 @@
   font-size: 14px;
   margin-left: 5px;
   text-decoration: underline;
-  bottom: 210px;
+  bottom: 203px;
 }
 
 .Confrim-Paswsword-arabic{
