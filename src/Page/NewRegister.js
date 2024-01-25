@@ -121,7 +121,7 @@ const Register = () => {
                 </div><br />
                 <div className='Box1'>
                   <div className='FristName'>
-                  {focuseField === "FirstName" || inputValues.FirstName.length > 0 ? (<label htmlFor="FirstName">{t("FirstName")}</label>) : null}
+                  {focuseField === "FirstName" || inputValues.FirstName.length > 0 ? (<label className="FirstName">{t("FirstName")}</label>) : null}
                     <input type='text' 
                     placeholder={focuseField === 'FirstName' ? '' : t("FirstName")} 
                      onFocus={() => onfieldfocuse ('FirstName')}
@@ -130,7 +130,7 @@ const Register = () => {
                      required />
                   </div>
                   <div className='LastName'>
-                  {focuseField === "LastName" || inputValues.LastName.length > 0 ? (<label htmlFor="LastName">{t("LastName")}</label>) : null}
+                  {focuseField === "LastName" || inputValues.LastName.length > 0 ? (<label className="LastName">{t("LastName")}</label>) : null}
                     <input type='text' 
                     placeholder={focuseField === 'LastName' ? '' : t("LastName")} 
                     onFocus={() => onfieldfocuse ('LastName')}
@@ -184,7 +184,7 @@ const Register = () => {
                     <CountrySelect/>
                   </div>
                   <div className='Number'>
-                    {focuseField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label htmlFor="MobileNumber">{t("MobileNumber")}</label>) : null}
+                    {focuseField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label className="MobileNumber">{t("MobileNumber")}</label>) : null}
                     <input type='number' 
                     placeholder={focuseField === 'MobileNumber' ? '' : t("MobileNumber")} 
                     onFocus={() => onfieldfocuse ('MobileNumber')}
