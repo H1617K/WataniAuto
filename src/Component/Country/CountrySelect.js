@@ -2,32 +2,39 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import '../Country/Country.css'
+import '../Country/Country.css';
 
 export default function CountrySelect() {
+
+
   return (
     <div className='Auto'>
-    <Autocomplete
-      id="country-select"
-      options={countries}
-      sx={{ width: 100 }}
-      getOptionLabel={(option) => option.phone}
-      renderOption={(props, option) => (
-        <Box component="li" sx={{width:200}} {...props}>
-          {option.label}  {option.phone}
-        </Box>
-      )}
-      renderInput={(params) => (
-        <TextField
-          {...params} 
-          inputProps={{
-            ...params.inputProps,
-            autoComplete: 'new-password',
-          }}
-        />
-      )}
-      clearIcon={null} 
-    />
+      <Autocomplete
+        id="country-select"
+        options={countries}
+        sx={{ width: 109 }}
+        getOptionLabel={(option) => option.phone}
+        renderOption={(props, option) => (
+          <Box component="li" sx={{ width: 200 }} {...props}>
+            {option.label} {option.phone} 
+          </Box>
+        )}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              style: { color: 'white' }, 
+            }}
+            inputProps={{
+              ...params.inputProps,
+              autoComplete: 'new-password',
+            }}
+          />
+        )}
+        clearIcon={null}
+        disableClearable={true} 
+      />
     </div>
   );
 }
