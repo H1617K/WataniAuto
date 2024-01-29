@@ -24,7 +24,7 @@ export default function CountrySelect() {
             {...params}
             InputProps={{
               ...params.InputProps,
-              style: { color: 'white' }, 
+              style: { color: 'white',border: 'none' }, 
             }}
             inputProps={{
               ...params.inputProps,

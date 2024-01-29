@@ -12,8 +12,6 @@ export const isValidPassword = (password) => {
   return passwordRegex.test(password);
 }
 
-
-
 export const useFormValidations = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
@@ -76,9 +74,13 @@ export const useFormValidations = () => {
 
     if (!isValidEmail(email)) {
       setEmailError("Please enter the Correct email id.")
+      return;
     }
-    if (!isValidPassword(password))
+    if (!isValidPassword(password)){
     setPasswordError("please enter the Correct Password.")
+      return;
+    }
+
     if(password !== confirmPassword){
       setConfirmPasswordError(t("ConfirmPasswordError"))
     }

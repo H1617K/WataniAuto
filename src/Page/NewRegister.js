@@ -205,9 +205,9 @@ const Register = () => {
                         {requirements.map((req, index) => (
                           <li key={index} className={passwordRequirements[index].isValid ? "valid" : "invalid"}>
                             <div className="icon-container">
-                              <span className="icon">&#9898;</span> 
-                              {passwordRequirements[index].isValid && <span className="checkmark">&#10003;</span>} 
-                              <span className='requirement-label'>{req.lable}</span>
+                             <span className="icon">&#9898;</span> 
+                             {passwordRequirements[index].isValid && <span className="checkmark">&#10003;</span>} 
+                             <span className='requirement-label'>{req.lable}</span>
                             </div>
                           </li>
                         ))}
