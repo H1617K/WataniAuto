@@ -12,6 +12,14 @@ import { useFormValidations } from '../Utils/formValidations';
 import CountrySelect from '../Component/Country/CountrySelect';
 
 const Register = () => {
+
+  const { email, password, isEmailFocused, 
+    setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
+    requirements, passwordRequirements, handlePasswordRegisterChange,setIsPasswordFocused,isPasswordFocused,
+    confirmPassword,isconfirmPasswordFocused, setIsConfirmPasswordFocused,confirmPasswordError,
+    handleConfirmPasswordChange,
+  }= useFormValidations()
+
   const { t } = useTranslation(); // Traslation for all page and it's input
   const langdirection = i18n.language === "عربي" ? "rtl" : "ltr"; // Language Direction
   const language = i18n.language === "عربي"; // chnage show and hide password direction
@@ -22,6 +30,7 @@ const Register = () => {
   const [showMessage, setShowMessage] = useState(false); // info mail message
   const [FocusedPassword, setFocuedPassword] = useState(false);
   const navigate = useNavigate(); // Move useNavigate outside of the handleToLogin function
+  const [isChecked, setisChecked] = useState(false);
 
   const [focuseField, setFocuseField] = useState ('');
 
@@ -35,13 +44,25 @@ const Register = () => {
 
   const handlerChange =(fieldname, value) => {
     setInputValues ((prevValues) => ({
-      ...prevValues,
-      [fieldname]: value,
+    ...prevValues,
+    [fieldname]: value,
     }))
   }
 
+  const isformValid = (
+    inputValues.fieldName !== "" &&
+    email !== "" &&
+    password !== "" &&
+    confirmPassword !== "" &&
+    isChecked
+  )
+
+  const handlerChangeCheck = () => {
+    setisChecked(!isChecked);
+  } ;
+
   const onfieldfocuse = (fieldname) => {
-     setFocuseField(fieldname)
+    setFocuseField(fieldname)
   }
   
   const onfieldblur = () => {
@@ -98,13 +119,7 @@ const Register = () => {
     navigate('/Login');
   };
 
-  const { email, password, isEmailFocused, 
-    setIsEmailFocused,handlerSubmit, emailError, passwordError, handleEmailChange,
-    requirements, passwordRequirements, handlePasswordRegisterChange,setIsPasswordFocused,isPasswordFocused,
-    confirmPassword,isconfirmPasswordFocused, setIsConfirmPasswordFocused,confirmPasswordError,
-    handleConfirmPasswordChange,
-  }= useFormValidations()
-
+  
   return (
     <>
       <section className="Main-Register-Page" dir={langdirection}>
@@ -262,14 +277,15 @@ const Register = () => {
                 </div><br />
               <div className='Box6'>
                 <div className='CheckBox'>
-                  <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" required/>
+                  <input type="checkbox" id="transparentCheckbox" className="transparent-checkbox" checked={isChecked} onChange={handlerChangeCheck}required/>
                 </div>
                 <div className='Notice'>
                   <h6>{t("Notice")}</h6>
                 </div>
               </div>
                 <div className='SubmitButton'>
-                  <button type='submit'>{t("CreateAccount")}</button>
+                  <button type='submit' className={`btn_create-account ${isformValid ? 'form-valid' : 'form-invalid'}`}
+                  disabled={!isformValid}>{t("CreateAccount")}</button>
                 </div>
              </div>
             </form>

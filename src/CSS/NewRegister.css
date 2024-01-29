@@ -436,6 +436,10 @@
   font-family: "Sofia Pro-Reguler", Helvetica
 }
 
+.SubmitButton .form-valid{
+  background-color: blue;
+}
+
 .SubmitButton {
   display: flex;
   justify-content: center;
