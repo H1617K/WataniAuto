@@ -21,6 +21,7 @@
     "react-localization": "^1.0.19",
     "react-phone-input-2": "^2.15.1",
     "react-phone-number-input": "^3.3.9",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
