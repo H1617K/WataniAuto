@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,6 +22,7 @@ export const useFormValidations = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isEmailFocused, setIsEmailFocused] = useState(false)
   const [isPasswordFocused, setIsPasswordFocused] = useState(false)
+  const navigate = useNavigate();
 
    const [formData, setFormData] = useState([])
 
@@ -67,6 +69,7 @@ export const useFormValidations = () => {
         if(user){
           toast.success("Login successful!");
           console.log("email and password is correctly match ")
+          navigate('/Home')
         }
         else{
           toast.error("invaid credentials !")
