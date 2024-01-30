@@ -5,7 +5,8 @@ const Home = () => {
   return (
     <>
     <div>
-      Home
+      <button type='logot'  className="logo">Logo</button>
+        <h1 id="title">Welcome to the MVP!<br/>Where you can find your next project.</h1>
     </div>
     </>
 

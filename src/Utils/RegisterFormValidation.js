@@ -32,8 +32,6 @@ export const useRegisterFromValidation = () => {
 
 
     const [formData, setFormData] = useState([]);
-
-    
     const { t } = useTranslation();
 
    const requirements = [

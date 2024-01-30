@@ -4,19 +4,23 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Page/Home';
 import Login from './Page/Login';
 import NewRegister from './Page/NewRegister';
+import Forgetpassword from './Page/Forgetpassword';
 
 function App() {
   return (
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="HomePage" element={<Home />} />
+        <Route path="Home" element={<Home />} />
       </Routes>
       <Routes>
         <Route path="Login" element={<Login/>} />
       </Routes>
       <Routes>
         <Route path="NewRegister" element={<NewRegister/>} />
+      </Routes>
+      <Routes>
+        <Route path="Forgetpassword" element={<Forgetpassword/>} />
       </Routes>
     </BrowserRouter>
     </>
