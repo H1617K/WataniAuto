@@ -15,13 +15,10 @@ export const isValidPassword = (password) => {
 export const useFormValidations = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
-  const [confirmPassword,setConfirmPassword] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError,setConfirmPasswordError] = useState("")
   const [isEmailFocused, setIsEmailFocused] = useState(false)
   const [isPasswordFocused, setIsPasswordFocused] = useState(false)
-  const [isconfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false);
 
   const [formData, setFormData] = useState([])
 
@@ -34,40 +31,7 @@ export const useFormValidations = () => {
     setPasswordError('');
   };
 
-  const handleConfirmPasswordChange = (e) =>{
-    setConfirmPassword(e.target.value);
-    setConfirmPasswordError("")
-  }
-
   const { t } = useTranslation();
-
-
-  const requirements = [
-    { regex: /.{8,15}/,lable: t("Condiction1") ,index: 0 },
-    { regex: /[A-Z]/,lable:t("Condiction2") , index: 1 },
-    { regex: /[a-z]/,lable: t("Condiction3"), index: 2 },
-    { regex: /[0-9]/,lable: t("Condiction4"), index: 3 },
-    { regex: /[^A-Za-z0-9]/, lable:t("Condiction5") , index: 4 },
-  ]
-
-  const [passwordRequirements, setPasswordRequirements] = useState(
-    Array.from({ length: requirements.length }, () => ({ isValid: false }))
-  );
-
-  const updatePasswordRequirements = (password) => {
-    const updatedRequirements = requirements.map((req) => ({
-     isValid: req.regex.test(password),
-    }));
-    setPasswordRequirements(updatedRequirements);
-  };
-
-  const handlePasswordRegisterChange = (e) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-    setPasswordError("");
-    // Update password requirements feedback
-    updatePasswordRequirements(newPassword);
-  };
 
  const handlerSubmit = (e) => {
     e.preventDefault()
@@ -81,18 +45,18 @@ export const useFormValidations = () => {
       return;
     }
 
-    if(password !== confirmPassword){
-      setConfirmPasswordError(t("ConfirmPasswordError"))
-    }
+    // if(password !== confirmPassword){
+    //   setConfirmPasswordError(t("ConfirmPasswordError"))
+    // }
 
     if (isValidEmail(email)
     && isValidPassword(password)) {
       setEmail("")
       setPassword("")
-      setConfirmPassword("")
+      // setConfirmPassword("")
       setIsEmailFocused(false)
       setIsPasswordFocused(false)
-      setIsConfirmPasswordFocused(false);
+      // setIsConfirmPasswordFocused(false);
 
       const newData = { email, password }
       setFormData((prevData) => [...prevData, newData])
@@ -103,9 +67,8 @@ export const useFormValidations = () => {
   }
   return {
     email, password, setEmail, setPassword,
-    confirmPassword,setConfirmPassword,isconfirmPasswordFocused, setIsConfirmPasswordFocused,confirmPasswordError,
-    setConfirmPasswordError, handleConfirmPasswordChange, isEmailFocused, setIsEmailFocused, isPasswordFocused,
+    isEmailFocused, setIsEmailFocused, isPasswordFocused,
     setIsPasswordFocused, handlerSubmit, emailError, passwordError,handleEmailChange, handlePasswordChange, 
-    formData, requirements, passwordRequirements, handlePasswordRegisterChange
+    formData
   }
 }
