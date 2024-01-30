@@ -116,6 +116,7 @@ const Register = () => {
                   <div className='FristName'>
                   {focusedField === "FirstName" || (inputValues.FirstName && inputValues.FirstName.length > 0) ? (<label className="FirstName-lable">{t("FirstName")}</label>) : null}
                   <input type='text' 
+                    value={inputValues.FirstName}
                     placeholder={focusedField === 'FirstName' ? '' : t("FirstName")} 
                     onFocus={() => onfieldfocuse ('FirstName')}
                     onBlur={onfieldblur}
@@ -124,7 +125,8 @@ const Register = () => {
                   </div>
                   <div className='LastName'>
                   {focusedField === "LastName" || (inputValues.LastName && inputValues.LastName.length > 0) ? (<label className="LastName-lable">{t("LastName")}</label>) : null}
-                  <input type='text' 
+                  <input type='text'
+                    value={inputValues.LastName} 
                     placeholder={focusedField === 'LastName' ? '' : t("LastName")} 
                     onFocus={() => onfieldfocuse ('LastName')}
                     onBlur={onfieldblur}
@@ -136,6 +138,7 @@ const Register = () => {
                   <div className='Email'>
                     {isEmailFocused && <label className="Label-Email">{t("Email")}</label>}
                     <input
+                      value={Registeremail}
                       type="email"
                       className={emailError ? 'error' : ''}
                       name="email"
@@ -235,6 +238,7 @@ const Register = () => {
                   )}
                   <input
                     type={showconfimpassword ? 'text' : 'password'}
+                    value={confirmPassword}
                     id="ConfrimPassword"
                     name="ConfrimPassword"
                     onFocus={OnConfirmPasswordFocus}
