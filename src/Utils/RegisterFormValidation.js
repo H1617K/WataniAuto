@@ -75,7 +75,7 @@ export const useRegisterFromValidation = () => {
 
     const handleChange = (fieldName, value) => {
         let sanitizedValue;
-        if (fieldName === 'mobile') {
+        if (fieldName === 'MobileNumber') {
             // For mobile field, allow only digits
             sanitizedValue = value.replace(/\D/g, '');
         }
@@ -132,7 +132,7 @@ export const useRegisterFromValidation = () => {
             else{
             console.log("form submitted")
             resetFormFields()
-            const newData = { FirstName: inputValues.firstName, LastName: inputValues.lastName, Email: Registeremail, Password: Registerpassword };
+            const newData = { FirstName: inputValues.FirstName, LastName: inputValues.LastName, Email: Registeremail, Password: Registerpassword };
             const updatedFormData = [...formData, newData];
 
             setFormData(updatedFormData);

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const isValidEmail = (email) => {
@@ -20,7 +22,7 @@ export const useFormValidations = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false)
   const [isPasswordFocused, setIsPasswordFocused] = useState(false)
 
-  const [formData, setFormData] = useState([])
+   const [formData, setFormData] = useState([])
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -58,10 +60,19 @@ export const useFormValidations = () => {
       setIsPasswordFocused(false)
       // setIsConfirmPasswordFocused(false);
 
-      const newData = { email, password }
-      setFormData((prevData) => [...prevData, newData])
-
-      console.log(`Email: ${newData.email}, Password: ${newData.password}`);
+      const storedData = localStorage.getItem("formData")
+      if(storedData){
+        const formData = JSON.parse(storedData);
+        const user = formData.find((user) => user.Email === email && user.Password === password)
+        if(user){
+          toast.success("Login successful!");
+          console.log("email and password is correctly match ")
+        }
+        else{
+          toast.error("invaid credentials !")
+          console.log("incorrect")
+        }
+      }
 
     }
   }

@@ -178,12 +178,12 @@ const Register = () => {
                   </div>
                   <div className='Number'>
                     {focusedField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label className="MobileNumber-lable">{t("MobileNumber")}</label>) : null}
-                    <input type='number' 
+                    <input type='tel' 
                     placeholder={focusedField === 'MobileNumber' ? '' : t("MobileNumber")} 
                     onFocus={() => onfieldfocuse ('MobileNumber')}
                     onBlur={onfieldblur}
                     onChange={(e) => handleChange('MobileNumber', e.target.value)} 
-                    maxLength={20}
+                    value={inputValues.MobileNumber}
                     required/> 
                   </div>
                 </div><br />

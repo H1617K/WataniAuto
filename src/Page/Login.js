@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import i18n from '../Utils/LanguageLocalization';
 import { useTranslation } from 'react-i18next';
 import { useFormValidations } from '../Utils/formValidations';
+import { ToastContainer } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate(); // Navigation 
@@ -136,6 +137,7 @@ const Login = () => {
                 </div>
               </form>
             </div>
+            <ToastContainer />
           </section>
           <FooterOption />
         </div>
