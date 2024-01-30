@@ -114,17 +114,17 @@ const Register = () => {
                 </div><br />
                 <div className='Box1'>
                   <div className='FristName'>
-                  {focusedField === "FirstName" || inputValues.FirstName.length > 0 ? (<label className="FirstName-lable">{t("FirstName")}</label>) : null}
-                    <input type='text' 
+                  {focusedField === "FirstName" || (inputValues.FirstName && inputValues.FirstName.length > 0) ? (<label className="FirstName-lable">{t("FirstName")}</label>) : null}
+                  <input type='text' 
                     placeholder={focusedField === 'FirstName' ? '' : t("FirstName")} 
-                     onFocus={() => onfieldfocuse ('FirstName')}
-                     onBlur={onfieldblur}
-                     onChange={(e) => handleChange('FirstName', e.target.value)}
-                     required />
+                    onFocus={() => onfieldfocuse ('FirstName')}
+                    onBlur={onfieldblur}
+                    onChange={(e) => handleChange('FirstName', e.target.value)}
+                    required />
                   </div>
                   <div className='LastName'>
-                  {focusedField === "LastName" || inputValues.LastName.length > 0 ? (<label className="LastName-lable">{t("LastName")}</label>) : null}
-                    <input type='text' 
+                  {focusedField === "LastName" || (inputValues.LastName && inputValues.LastName.length > 0) ? (<label className="LastName-lable">{t("LastName")}</label>) : null}
+                  <input type='text' 
                     placeholder={focusedField === 'LastName' ? '' : t("LastName")} 
                     onFocus={() => onfieldfocuse ('LastName')}
                     onBlur={onfieldblur}
@@ -177,15 +177,18 @@ const Register = () => {
                     <CountrySelect/>
                   </div>
                   <div className='Number'>
-                    {focusedField === "MobileNumber" || inputValues.MobileNumber.length > 0 ? (<label className="MobileNumber-lable">{t("MobileNumber")}</label>) : null}
-                    <input type='tel' 
+                  {focusedField === "MobileNumber" || (inputValues.MobileNumber && inputValues.MobileNumber.length > 0) ? 
+                    (<label className="MobileNumber-lable">{t("MobileNumber")}</label>) : null}
+                  <input 
+                    type='tel' 
                     placeholder={focusedField === 'MobileNumber' ? '' : t("MobileNumber")} 
                     onFocus={() => onfieldfocuse ('MobileNumber')}
                     onBlur={onfieldblur}
                     onChange={(e) => handleChange('MobileNumber', e.target.value)} 
-                    value={inputValues.MobileNumber}
-                    required/> 
-                  </div>
+                    value={inputValues.MobileNumber || ''} 
+                    required
+                  /> 
+                </div>
                 </div><br />
                 <div className='Box4'>
                   <div className='Password'>
