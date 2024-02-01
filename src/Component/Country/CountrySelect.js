@@ -29,6 +29,7 @@ export default function CountrySelect() {
             inputProps={{
               ...params.inputProps,
               autoComplete: 'new-password',
+              placeholder: '+966',
             }}
           />
         )}
