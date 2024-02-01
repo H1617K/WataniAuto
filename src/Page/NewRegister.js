@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 // import countryList from 'react-select-country-list';
 import { useRegisterFromValidation } from '../Utils/RegisterFormValidation';
 import CountrySelect from '../Component/Country/CountrySelect';
+import { ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
@@ -274,6 +275,7 @@ const Register = () => {
                 </div>
              </div>
             </form>
+            <ToastContainer />
           </section>
           <FooterOption />
         </div>

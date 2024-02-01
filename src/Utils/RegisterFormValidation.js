@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {app} from './FricebaseConfig'
 
 export const isValidRegisterEmail = (Registeremail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,6 +33,7 @@ export const useRegisterFromValidation = () => {
         LastName: '',
         MobileNumber: '',
     });
+    const navigate= useNavigate();
 
 
     const [formData, setFormData] = useState([]);
@@ -123,8 +128,8 @@ export const useRegisterFromValidation = () => {
 
         const isDuplicateUser = formData.some((data) => data.Email === Registeremail && data.Password === Registerpassword);
             if (isDuplicateUser) {
-            setEmailError("Email combination already registered");
-            setPasswordError("password combination already registered")
+            toast.error("Email and password alrady register mack another email and password");
+            
             return;
         }
             else{
@@ -136,6 +141,8 @@ export const useRegisterFromValidation = () => {
             setFormData(updatedFormData);
 
             localStorage.setItem("formData", JSON.stringify(updatedFormData))
+            toast.success("Sucessfully Register")
+            navigate('/Login')
         } 
     }
     return {
