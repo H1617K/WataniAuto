@@ -23,6 +23,8 @@ i18n
                 RegisterNow: "Register Now",
                 emailError: "Please enter the Correct email id.",
                 passwordError: "please enter the Correct Password.",
+                TostSucess1:"Login Sucessfully!",
+                TostError1:"Invalid Credentials!",
 
                 //FooterOption
                 AboutUs:"About Us",
@@ -43,6 +45,8 @@ i18n
                 ConfirmPasswordError: "Password Doesn't Match",
                 Notice: "By creating a watani account, I agree to the Terms of Use, and Privacy Notice.",
                 CreateAccount: "Create Account",
+                TostError: "Email and password already exists, make anothr email ad password",
+                TostSucess: "Register Sucessfully!",
 
                 //PasswordValidation
                 Passwordmusthave : "Password must have",
@@ -67,6 +71,8 @@ i18n
                 RegisterNow: "سجل الآن",
                 emailError: "الرجاء إدخال معرف البريد الإلكتروني الصحيح.",
                 passwordError: "الرجاء إدخال كلمة المرور الصحيحة.",
+                TostSucess1:"تسجيل الدخول بنجاح!",
+                TostError1:"بيانات الاعتماد غير صالحة !",
 
                 //FooterOption
                 AboutUs:"معلومات عنا",
@@ -86,7 +92,9 @@ i18n
                 ConfrimPassword: "تأكيد كلمة المرور*",
                 ConfirmPasswordError: "كلمة المرور غير متطابقة",
                 Notice: "بإنشاء حساب وطني، فإنني أوافق على شروط الاستخدام وإشعار الخصوصية.",
-                CreateAccount: "إنشاء حساب", 
+                CreateAccount: "إنشاء حساب",
+                TostError:"البريد الإلكتروني وكلمة المرور موجودان بالفعل، قم بإنشاء كلمة مرور أخرى لإعلان البريد الإلكتروني",
+                TostSucess:"سجل بنجاح!",
 
                 //PasswordValidation
                 Passwordmusthave : "يجب أن يكون لديك كلمة المرور",

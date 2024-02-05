@@ -42,11 +42,11 @@ export const useFormValidations = () => {
   e.preventDefault()
 
   if (!isValidEmail(email)) {
-    setEmailError("Please enter the Correct email id.")
+    setEmailError(t("EmailError"))
       return;
     }
     if (!isValidPassword(password)){
-      setPasswordError("please enter the Correct Password.")
+      setPasswordError(t("PasswordError"))
       return;
       }
 
@@ -69,14 +69,14 @@ export const useFormValidations = () => {
       const isDuplicateUser = users.find((user) => user.email === email && user.password === password);
         if (isDuplicateUser) {
           setIsLoading(true)
-          toast.success("Login success")
+          toast.success(t("TostSucess1"))
           setTimeout(()=>{
           setTimeout(false)
           Navigate("/Home")
         },3000)
       }
         else {
-        toast.error("Invalid Credentials")
+        toast.error(t("TostError1"))
       }
     }
   }

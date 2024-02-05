@@ -277,7 +277,6 @@ const Register = () => {
                 </div>
              </div>
             </form>
-            <ToastContainer />
           </section>
           <FooterOption />
         </div>
@@ -303,6 +302,7 @@ const Register = () => {
           </div>
         </section>
       </section>
+      <ToastContainer />
     </>
   );
 }

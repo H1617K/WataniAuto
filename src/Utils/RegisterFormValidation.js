@@ -133,7 +133,7 @@ export const useRegisterFromValidation = () => {
             const users = Object.values(existUser)
             const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword)
             if (isDuplicateUser) {
-                toast.error("Email and password already exists, make anothr email ad password")
+                toast.error(t("TostError"))
                 resetFormFields()
             }
         else if ( Registerpassword === confirmPassword){
@@ -150,7 +150,7 @@ export const useRegisterFromValidation = () => {
             })
             if (res){
                 setIsLoading (true)
-                toast.success("Register Sucessfully!")
+                toast.success(t("TostSucess"))
                 setTimeout(()=> {
                     setIsLoading(false)
                     resetFormFields()
