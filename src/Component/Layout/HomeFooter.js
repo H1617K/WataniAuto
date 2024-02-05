@@ -47,7 +47,7 @@ const HomeFooter = () => {
                             <div className='media-container'>
                                <h4>Fllow Me</h4>
                                 <ul className='media-list'>
-                                    <li><Link to="" className='link-item'></Link><SlSocialFacebook /></li>
+                                    <li><Link to="" className='link-item'><SlSocialFacebook /></Link></li>
                                     <li><Link to="" className='link-item'><SlSocialTwitter /></Link></li>
                                     <li><Link to="" className='link-item'><SiInstagram /></Link></li>
                                     <li><Link to="" className='link-item'><FaLinkedinIn /></Link></li>
@@ -132,10 +132,10 @@ const FooterContainer = styled.footer`
     margin-right: 135px;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+    cursor: pointer;
 }
 .Footerlink-container-2 div span{
     margin: 10px 0px;
-    color: white;
+    color: gray;
 }
 `
