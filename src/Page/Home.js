@@ -1,15 +1,15 @@
 import React from 'react'
-import "../CSS/Home.css"
+import { HomeImg } from '../Component/Images'
+import HomeFooter from '../Component/Layout/HomeFooter'
 
 const Home = () => {
   return (
     <>
-    <div>
-      <button type='logot'  className="logo">Logo</button>
-        <h1 id="title">Welcome to the MVP!<br/>Where you can find your next project.</h1>
-    </div>
+      <div className='Midel-Img'>
+        <img src={HomeImg} alt='img' />
+      </div>
+      <HomeFooter/>
     </>
-
   )
 }
 

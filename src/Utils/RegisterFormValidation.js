@@ -111,125 +111,125 @@ export const useRegisterFromValidation = () => {
         });
     };
   
-    // const handlerRegisterSubmit =async (e) => {
-    //     e.preventDefault();
-
-    //     if (!isValidRegisterEmail(Registeremail)) {
-    //         setEmailError(t("EmailError"));
-    //     }
-    //     if (!isValidRegisterPassword(Registerpassword)) {
-    //         setPasswordError(t("PasswordError"));
-    //     }
-    //     if (Registerpassword !== confirmPassword) {
-    //         setConfirmPasswordError(t("ConfirmPasswordError"))
-    //     }
-
-    //     try{
-    //         const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json")
-    //         if(!response) {
-    //             console.log('error in fetching data')
-    //         }
-    //         const existUser = await response.json();
-    //         const users = Object.values(existUser)
-    //         const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword)
-    //         if (isDuplicateUser) {
-    //             toast.error(t("TostError"))
-    //             resetFormFields()
-    //         }
-    //     else if ( Registerpassword === confirmPassword){
-    //         const res = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json",
-    //         {
-    //             method: "POST",
-    //             headers: {
-    //             'Content-type': "application.json"
-    //             },
-    //             body: JSON.stringify({
-    //             email: Registeremail,
-    //             password: Registerpassword,
-    //             })
-    //         })
-    //         if (res){
-    //             setIsLoading (true)
-    //             toast.success(t("TostSucess"))
-    //             setTimeout(()=> {
-    //                 setIsLoading(false)
-    //                 resetFormFields()
-    //                 navigate("/login")
-    //             },3000);
-    //         } else{
-    //             alert("not connect data base");  
-    //         }   
-    //     };
-    //     }
-    //     catch(err){
-    //     console.error(err.message)
-    //     }
-    // }
-
-    const handlerRegisterSubmit = async (e) => {
+    const handlerRegisterSubmit =async (e) => {
         e.preventDefault();
-    
+
         if (!isValidRegisterEmail(Registeremail)) {
             setEmailError(t("EmailError"));
-           // Stop execution if email is invalid
         }
-    
         if (!isValidRegisterPassword(Registerpassword)) {
             setPasswordError(t("PasswordError"));
-            // Stop execution if password is invalid
         }
-    
         if (Registerpassword !== confirmPassword) {
-            setConfirmPasswordError(t("ConfirmPasswordError"));
-            // Stop execution if passwords don't match
+            setConfirmPasswordError(t("ConfirmPasswordError"))
         }
 
-          // Register the user
-          const res = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json", {
-            method: "POST",
-            headers: {
-                'Content-type': "application/json"
-            },
-            body: JSON.stringify({
-                email: Registeremail,
-                password: Registerpassword,
-            })
-        });
-    
-        try {
-            const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json");
-            if (!response.ok) {
-                throw new Error("Failed to fetch data");
+        try{
+            const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json")
+            if(!response) {
+                console.log('error in fetching data')
             }
             const existUser = await response.json();
-            const users = Object.values(existUser);
-    
-            if (users.length > 0) {
-                // If there are existing users, check for duplicates
-                const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword);
-                if (isDuplicateUser) {
-                    toast.error(t("TostError"));
-                    resetFormFields();
-                   // Stop execution if user is duplicate
-                }
+            const users = Object.values(existUser)
+            const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword)
+            if (isDuplicateUser) {
+                toast.error(t("TostError"))
+                resetFormFields()
             }
-    
-            if (res.ok) {
-                setIsLoading(true);
-                toast.success(t("TostSucess"));
-                setTimeout(() => {
-                    setIsLoading(false);
-                    resetFormFields();
-                    navigate("/login");
-                }, 3000);
-            } else {
-                throw new Error("Failed to connect to database");
-            }
-        } catch (err) {
-            console.error(err.message);
-            // Handle error, maybe show a toast message
+        else if ( Registerpassword === confirmPassword){
+            const res = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json",
+            {
+                method: "POST",
+                headers: {
+                'Content-type': "application.json"
+                },
+                body: JSON.stringify({
+                email: Registeremail,
+                password: Registerpassword,
+                })
+            })
+            if (res){
+                setIsLoading (true)
+                toast.success(t("TostSucess"))
+                setTimeout(()=> {
+                    setIsLoading(false)
+                    resetFormFields()
+                    navigate("/login")
+                },3000);
+            } else{
+                alert("not connect data base");  
+            }   
+        };
+        }
+        catch(err){
+        console.error(err.message)
         }
     }
+
+    // const handlerRegisterSubmit = async (e) => {
+    //     e.preventDefault();
+    
+    //     if (!isValidRegisterEmail(Registeremail)) {
+    //         setEmailError(t("EmailError"));
+    //        // Stop execution if email is invalid
+    //     }
+    
+    //     if (!isValidRegisterPassword(Registerpassword)) {
+    //         setPasswordError(t("PasswordError"));
+    //         // Stop execution if password is invalid
+    //     }
+    
+    //     if (Registerpassword !== confirmPassword) {
+    //         setConfirmPasswordError(t("ConfirmPasswordError"));
+    //         // Stop execution if passwords don't match
+    //     }
+
+    //       // Register the user
+    //       const res = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json", {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-type': "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             email: Registeremail,
+    //             password: Registerpassword,
+    //         })
+    //     });
+    
+    //     try {
+    //         const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json");
+    //         if (!response.ok) {
+    //             throw new Error("Failed to fetch data");
+    //         }
+    //         const existUser = await response.json();
+    //         const users = Object.values(existUser);
+    
+    //         if (users.length > 0) {
+    //             // If there are existing users, check for duplicates
+    //             const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword);
+    //             if (isDuplicateUser) {
+    //                 toast.error(t("TostError"));
+    //                 resetFormFields();
+    //                // Stop execution if user is duplicate
+    //             }
+    //         }
+    
+    //         if (res.ok) {
+    //             setIsLoading(true);
+    //             toast.success(t("TostSucess"));
+    //             setTimeout(() => {
+    //                 setIsLoading(false);
+    //                 resetFormFields();
+    //                 navigate("/login");
+    //             }, 3000);
+    //         } else {
+    //             throw new Error("Failed to connect to database");
+    //         }
+    //     } catch (err) {
+    //         console.error(err.message);
+    //         // Handle error, maybe show a toast message
+    //     }
+    // }
     
 
     return {
