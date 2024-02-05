@@ -8,6 +8,7 @@ import i18n from '../Utils/LanguageLocalization';
 import { useTranslation } from 'react-i18next';
 import { useFormValidations } from '../Utils/formValidations';
 import { ToastContainer } from 'react-toastify';
+import Loader from '../Component/Loader/Loader';
 
 const Login = () => {
   const navigate = useNavigate(); // Navigation 
@@ -61,11 +62,12 @@ const Login = () => {
   //import Validation critearea for loginFrom
   const { email, password, isEmailFocused, 
     setIsEmailFocused, isPasswordFocused, setIsPasswordFocused, 
-    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,
+    handlerSubmit, emailError, passwordError, handleEmailChange, handlePasswordChange,isLoading
   }= useFormValidations()
 
   return (
     <section>
+      {isLoading && <Loader className="blur"/>}
       <div className="Main-login-Page" dir={langdirection}>
         <div className="back-img">
           <img src={img5} alt="img" /> 

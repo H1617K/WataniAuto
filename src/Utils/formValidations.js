@@ -22,7 +22,8 @@ export const useFormValidations = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isEmailFocused, setIsEmailFocused] = useState(false)
   const [isPasswordFocused, setIsPasswordFocused] = useState(false)
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
+  const [isLoading , setIsLoading] = useState(false)
 
    const [formData, setFormData] = useState([])
 
@@ -37,52 +38,53 @@ export const useFormValidations = () => {
 
   const { t } = useTranslation();
 
- const handlerSubmit = (e) => {
-    e.preventDefault()
+ const handlerSubmit = async(e) => {
+  e.preventDefault()
 
-    if (!isValidEmail(email)) {
-      setEmailError("Please enter the Correct email id.")
+  if (!isValidEmail(email)) {
+    setEmailError("Please enter the Correct email id.")
       return;
     }
     if (!isValidPassword(password)){
-    setPasswordError("please enter the Correct Password.")
+      setPasswordError("please enter the Correct Password.")
       return;
-    }
-
-    // if(password !== confirmPassword){
-    //   setConfirmPasswordError(t("ConfirmPasswordError"))
-    // }
-
-    if (isValidEmail(email)
-    && isValidPassword(password)) {
-      setEmail("")
-      setPassword("")
-      // setConfirmPassword("")
-      setIsEmailFocused(false)
-      setIsPasswordFocused(false)
-      // setIsConfirmPasswordFocused(false);
-
-      const storedData = localStorage.getItem("formData")
-      if(storedData){
-        const formData = JSON.parse(storedData);
-        const user = formData.find((user) => user.Email === email && user.Password === password)
-        if(user){
-          toast.success("Login successful!");
-          console.log("email and password is correctly match ")
-          navigate('/Home')
-        }
-        else{
-          toast.error("invaid credentials !")
-          console.log("incorrect")
-        }
       }
 
+      // if(password !== confirmPassword){
+      //   setConfirmPasswordError(t("ConfirmPasswordError"))
+      // }
+
+      if (isValidEmail(email)
+      && isValidPassword(password)) {
+      setEmail("")
+      setPassword("")
+      setIsEmailFocused(false)
+      setIsPasswordFocused(false)
+
+      const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json");
+      if (response) {
+        const userData = await response.json()
+        const users = Object.values(userData)
+
+      const isDuplicateUser = users.find((user) => user.email === email && user.password === password);
+        if (isDuplicateUser) {
+          setIsLoading(true)
+          toast.success("Login success")
+          setTimeout(()=>{
+          setTimeout(false)
+          Navigate("/Home")
+        },3000)
+      }
+        else {
+        toast.error("Invalid Credentials")
+      }
     }
   }
+}
   return {
     email, password, setEmail, setPassword,
     isEmailFocused, setIsEmailFocused, isPasswordFocused,
     setIsPasswordFocused, handlerSubmit, emailError, passwordError,handleEmailChange, handlePasswordChange, 
-    formData
+    formData,isLoading
   }
 }

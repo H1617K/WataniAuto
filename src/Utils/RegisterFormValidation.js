@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {app} from './FricebaseConfig'
 
 export const isValidRegisterEmail = (Registeremail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,6 +33,7 @@ export const useRegisterFromValidation = () => {
         MobileNumber: '',
     });
     const navigate= useNavigate();
+    const [isLoading, setIsLoading] = useState (false);
 
 
     const [formData, setFormData] = useState([]);
@@ -110,9 +110,8 @@ export const useRegisterFromValidation = () => {
             mobile: "",
         });
     };
-
-
-    const handlerRegisterSubmit = (e) => {
+  
+    const handlerRegisterSubmit =async (e) => {
         e.preventDefault();
 
         if (!isValidRegisterEmail(Registeremail)) {
@@ -121,55 +120,58 @@ export const useRegisterFromValidation = () => {
         if (!isValidRegisterPassword(Registerpassword)) {
             setPasswordError(t("PasswordError"));
         }
-
         if (Registerpassword !== confirmPassword) {
             setConfirmPasswordError(t("ConfirmPasswordError"))
         }
 
-        const isDuplicateUser = formData.some((data) => data.Email === Registeremail && data.Password === Registerpassword);
+        try{
+            const response = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json")
+            if(!response) {
+                console.log('error in fetching data')
+            }
+            const existUser = await response.json();
+            const users = Object.values(existUser)
+            const isDuplicateUser = users.some(data => data.email === Registeremail && data.password === Registerpassword)
             if (isDuplicateUser) {
-            toast.error("Email and password alrady register mack another email and password");
-            
-            return;
+                toast.error("Email and password already exists, make anothr email ad password")
+                resetFormFields()
+            }
+        else if ( Registerpassword === confirmPassword){
+            const res = await fetch("https://watani-auto-fcfda-default-rtdb.firebaseio.com/userData.json",
+            {
+                method: "POST",
+                headers: {
+                'Content-type': "application.json"
+                },
+                body: JSON.stringify({
+                email: Registeremail,
+                password: Registerpassword,
+                })
+            })
+            if (res){
+                setIsLoading (true)
+                toast.success("Register Sucessfully!")
+                setTimeout(()=> {
+                    setIsLoading(false)
+                    resetFormFields()
+                    navigate("/login")
+                },3000);
+            } else{
+                alert("not connect data base");  
+            }   
+        };
         }
-            else{
-            console.log("form submitted")
-            resetFormFields()
-            const newData = { FirstName: inputValues.FirstName, LastName: inputValues.LastName, Email: Registeremail, Password: Registerpassword };
-            const updatedFormData = [...formData, newData];
-
-            setFormData(updatedFormData);
-
-            localStorage.setItem("formData", JSON.stringify(updatedFormData))
-            toast.success("Sucessfully Register")
-            navigate('/Login')
-        } 
+        catch(err){
+        console.error(err.message)
+        }
     }
+
     return {
-        Registeremail,
-        setRegisterEmail,
-        Registerpassword,
-        setRegisterPassword,
-        confirmPassword,
-        setConfirmPassword,
-        isEmailFocused,
-        setIsEmailFocused,
-        isPasswordFocused,
-        setIsPasswordFocused,
-        isconfirmPasswordFocused,
-        setIsConfirmPasswordFocused,
-        confirmPasswordError,
-        setConfirmPasswordError,
-        handlerRegisterSubmit,
-        emailError,
-        passwordError,
-        setEmailError,
-        setPasswordError,
-        handleChange,
-        inputValues,
-        focusedField,
-        setFocusedField,
-        handleRegisterEmailChange,
+        emailError, setEmailError,Registeremail,setRegisterEmail, isEmailFocused,setIsEmailFocused, handleRegisterEmailChange,
+        passwordError, setPasswordError,Registerpassword,setRegisterPassword, isPasswordFocused,setIsPasswordFocused,
+        confirmPassword,setConfirmPassword,isconfirmPasswordFocused,setIsConfirmPasswordFocused,confirmPasswordError,setConfirmPasswordError,
+        handlerRegisterSubmit, handleChange,isLoading,
+        inputValues,focusedField,setFocusedField,
         handleCheckboxChange,
         isChecked,
         handleConfirmPasswordChange,

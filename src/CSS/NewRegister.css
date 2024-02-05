@@ -459,4 +459,7 @@
   border: none;
 }
 
-  
+.loader-bg{ 
+  filter: blur(6px);
+  pointer-events: none;
+}

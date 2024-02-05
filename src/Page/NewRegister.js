@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRegisterFromValidation } from '../Utils/RegisterFormValidation';
 import CountrySelect from '../Component/Country/CountrySelect';
 import { ToastContainer } from 'react-toastify';
+import Loader from '../Component/Loader/Loader';
 
 const Register = () => {
 
@@ -18,7 +19,7 @@ const Register = () => {
     isEmailFocused,setIsEmailFocused,isPasswordFocused,setIsPasswordFocused,isconfirmPasswordFocused,setIsConfirmPasswordFocused,
     confirmPasswordError,setConfirmPasswordError,handlerRegisterSubmit,emailError,passwordError,setEmailError,setPasswordError,
     handleChange,inputValues,focusedField,setFocusedField,handleRegisterEmailChange,handleCheckboxChange,isChecked,handleConfirmPasswordChange,
-    handlePasswordRegisterChange,requirements,passwordRequirements,formData,
+    handlePasswordRegisterChange,requirements,passwordRequirements,formData,isLoading
   }= useRegisterFromValidation()
 
   const { t } = useTranslation(); // Traslation for all page and it's input
@@ -101,7 +102,8 @@ const Register = () => {
   
   return (
     <>
-      <section className="Main-Register-Page" dir={langdirection}>
+    {isLoading && <Loader className="blur"/>}
+      <section className={`Main-Register-Page ${isLoading ? 'loader-bg' : ''}`} dir={langdirection}>
         <div className="back-img">
           <img src={img5} alt="img" />
           <section>

@@ -272,3 +272,8 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.loader-bg{ 
+  filter: blur(6px);
+  pointer-events: none;
+}
